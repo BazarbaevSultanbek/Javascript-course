@@ -1,0 +1,100 @@
+body {
+  background: wheat;
+  margin: 0;
+  padding: 0;
+}
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  padding: 15px 0;
+}
+.header p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25px;
+}
+.header-buttons button {
+  background-color: rgb(29, 105, 171);
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  padding: 5px 10px;
+  border: none;
+}
+.header-add {
+  gap: 40px;
+  margin-left: 10%;
+}
+
+input[type="date"] {
+  width: 160px;
+  color: #fff;
+  padding: 0 10px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: rgb(29, 105, 171);
+  border: 1px solid #4ec2e7;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.list-add-text {
+  border-radius: 5px;
+  padding: 5px 30px 5px 10px;
+  border-color: rgb(29, 105, 171);
+  font-family: "Source Sans Pro", sans-serif;
+  margin: 0 15px;
+}
+
+button[id="btn-note"] {
+  background-color: rgb(29, 105, 171);
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 5px 10px;
+  border: none;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 810px;
+  background: white;
+  margin-top: -54px;
+}
+.menu input {
+  display: none;
+}
+.menu label {
+  padding: 3px 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.list {
+  text-align: center;
+  padding-top: 15px;
+}
+.list-search {
+  padding: 10px 250px 10px 15px;
+  border-radius: 25px;
+  border-color: rgb(29, 105, 171);
+}
+
+input[id="All"]:checked ~ .lab-all {
+  background-color: rgb(29, 105, 171);
+  padding: 3px 5px;
+  color: #fff;
+}
+
+input[id="Process"]:checked ~ .lab-pro {
+  background-color: rgb(29, 105, 171);
+  padding: 3px 5px;
+  color: #fff;
+}
+
+.list-note-buttons button {
+  background-color: rgb(29, 105, 171);
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 5px 7px;
+}

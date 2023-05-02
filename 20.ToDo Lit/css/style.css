@@ -1,0 +1,86 @@
+body {
+    background: url(../img/space\ wallpaper\ 5.jpg) no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+}
+
+.list {
+    background: white;
+    margin: 7% auto 0 auto;
+    /* text-align: center; */
+    width: 300px;
+    border-radius: 10px;
+    padding: 35px 0 20px 0;
+}
+.list-login{
+    margin: 0 0 0 15px;
+}
+.svg{
+    width: 70px;
+    margin:-65px auto 0 105px;
+}
+.sign{
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+label {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+input {
+    margin: 15px 0;
+    padding: 5px 5px;
+    width: 250px;
+    border-radius: 7px;
+    border-color: rgb(24, 88, 143);
+}
+
+.btn {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    background-color: rgb(29, 105, 171);
+    border: none;
+    padding: 5px 105px;
+    margin-top: 5px;
+    border-radius: 7px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.pass-link a {
+    text-decoration: none;
+    color: rgb(14, 69, 172);
+    font-size: 13px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.pass-link {
+    margin: -17px 5px -12px 59%;
+}
+input[type="checkbox"]{
+    width: 15px !important;
+}
+input[name='list-cookie']{
+    margin-left: 15px !important;
+}
+.show input {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+}
+
+.list-reg {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    gap: 5px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.list-reg p {
+    font-size: 14px;
+}
+
+.list-reg a {
+    color: #2f81f7;
+    text-decoration: none;
+}
