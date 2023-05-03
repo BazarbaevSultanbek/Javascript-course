@@ -32,6 +32,8 @@ list.insertAdjacentHTML('afterend',
 list.innerHTML = `   
 <div class="list-radio">
 <input type='text' class='list-search' placeholder='Search'>
+<div class='list-note'>
+</div>
 </div>
 `
 
@@ -40,17 +42,26 @@ const btn = document.querySelector('#btn-note')
 const date = document.querySelector('.list-add-date')
 const note = document.querySelector('.list-add-text')
 btn.addEventListener('click', () => {
+    const listNote = document.querySelector('.list-note')
+
     if (date.value != "" && note.value != "") {
-        list.innerHTML = `
-        <div class="list-radio">
-    <input type='text' class='list-search' placeholder='Search'>
-    </div>  
-   <div class='list-note'>
-   <p>${date.value}</p>
-   <p>${note.value}</p>
-   <button id='foot'>dasdsadsa</button>
-   </div>
+        const newNote = `
+            <ul class="note-list">
+                <li>${date.value}</li>
+                <li>${note.value}</li>
+                <div>
+                <input type="checkbox" id='edit'>
+                <label for="edit">
+                <i class="fa-solid fa-pen-to-square" style="color: #ffd43b;"></i>
+                </label>
+                <input type="checkbox" id='delete'>
+                <label for='delete'>
+                <i class="fa-solid fa-trash" style="color:rgb(29,105,171)"></i>
+                </label>
+                </div>
+            </ul>
         `
+        listNote.insertAdjacentHTML('afterbegin', newNote)
     } else if (date.value == "" && note.value != "") {
         alert('Select date')
     } else if (date.value != "" && note.value == "") {
@@ -59,3 +70,4 @@ btn.addEventListener('click', () => {
         alert('select date and write note!')
     }
 })
+
