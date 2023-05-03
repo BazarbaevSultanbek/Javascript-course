@@ -37,6 +37,10 @@ body {
   gap: 40px;
   margin-left: 10%;
 }
+label[for='imp']{
+  padding-left: 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
 input[type="date"] {
   width: 160px;
@@ -75,7 +79,7 @@ button[id="btn-note"] {
   height: 210px;
   padding-left: 15px;
   background: white;
-  top: 114px;
+  top: 68px;
 }
 
 .menu input {
@@ -118,7 +122,7 @@ input[id="Process"]:checked~.lab-pro {
 }
 
 .list-note {
-  width: 600px;
+  width: 1000px;
   margin: 25px auto;
   background-color: #fff;
   border-radius: 15px;
@@ -128,14 +132,18 @@ input[id="Process"]:checked~.lab-pro {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid rgb(29, 105, 171);
-
   font-family: 'Open Sans', sans-serif;
 }
-
+.note-list span{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: orange;
+}
 .note-list li {
   list-style: none;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 input[id='delete']{
@@ -146,4 +154,7 @@ input[id='edit']{
 }
 label[for='edit']{
   padding-right: 10px;
+}
+.note-list li:nth-child(2):hover{
+    text-decoration: line-through;
 }

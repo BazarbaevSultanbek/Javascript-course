@@ -6,6 +6,8 @@ list.insertAdjacentHTML('beforebegin',
 <input type='date' class='list-add-date'> 
 <input type='text' class='list-add-text' placeholder='Add note'>
 <button id='btn-note'>Add Note</button>
+<label for="imp">Important</label>
+<input type='checkbox' id='important'>
 </div>  
 <div class='header-buttons'>
 <button class='list-logOut'>LogOut</button>
@@ -36,19 +38,21 @@ list.innerHTML = `
 </div>
 </div>
 `
-
-
+const important = document.querySelector('#important')
 const btn = document.querySelector('#btn-note')
 const date = document.querySelector('.list-add-date')
 const note = document.querySelector('.list-add-text')
+const time = new Date()
+let ul
 btn.addEventListener('click', () => {
     const listNote = document.querySelector('.list-note')
-
     if (date.value != "" && note.value != "") {
         const newNote = `
             <ul class="note-list">
-                <li>${date.value}</li>
-                <li>${note.value}</li>
+            <li >${note.value}</li>
+            <input type='radio' id='exercise'>
+            <li>${date.value}</li>
+                <li>${time.getHours()}:${time.getMinutes()}</li>
                 <div>
                 <input type="checkbox" id='edit'>
                 <label for="edit">
@@ -62,6 +66,14 @@ btn.addEventListener('click', () => {
             </ul>
         `
         listNote.insertAdjacentHTML('afterbegin', newNote)
+        ul = document.querySelector('.note-list')
+
+
+        if (imp.checked == true) {
+            ul.insertAdjacentHTML('afterbegin', `<span style='background:red' class='span-dot'></span>`)
+        } else {
+            ul.insertAdjacentHTML('afterbegin', `<span style='background:orange' class='span-dot'></span>`)
+        }
     } else if (date.value == "" && note.value != "") {
         alert('Select date')
     } else if (date.value != "" && note.value == "") {
@@ -69,5 +81,17 @@ btn.addEventListener('click', () => {
     } else {
         alert('select date and write note!')
     }
+})
+
+
+const sp = document.querySelector('.span-dot')
+const exercise = document.querySelector('#exer')
+exercise.addEventListener('click', () => {
+    sp.style.background = 'green'
+})
+
+const deleteNote = document.querySelector('#delete')
+deleteNote.addEventListener('click', (even) => {
+    even.classList.toggle("ul");
 })
 
