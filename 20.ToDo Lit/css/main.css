@@ -19,7 +19,7 @@ body {
   padding: 15px 0;
 }
 
-.header p {
+.header-logo {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 25px;
 }
@@ -33,16 +33,12 @@ body {
   border: none;
 }
 
-.header-add {
+.header-inputs {
   gap: 40px;
   margin-left: 10%;
 }
-label[for='imp']{
-  padding-left: 15px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
 
-input[type="date"] {
+.header-inputs-date {
   width: 160px;
   color: #fff;
   padding: 0 10px;
@@ -53,7 +49,7 @@ input[type="date"] {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.list-add-text {
+.header-inputs-text {
   border-radius: 5px;
   padding: 5px 30px 5px 10px;
   border-color: rgb(29, 105, 171);
@@ -61,7 +57,7 @@ input[type="date"] {
   margin: 0 15px;
 }
 
-button[id="btn-note"] {
+button[id="header-inputs-btn"] {
   background-color: rgb(29, 105, 171);
   color: white;
   font-size: 18px;
@@ -70,6 +66,16 @@ button[id="btn-note"] {
   padding: 5px 10px;
   border: none;
 }
+
+.header-inputs-label {
+  padding-left: 15px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+
+/* menu start*/
 
 .menu {
   position: absolute;
@@ -102,17 +108,24 @@ button[id="btn-note"] {
   border-color: rgb(29, 105, 171);
 }
 
-input[id="All"]:checked~.lab-all {
+input[id="All"]:checked~.menu-lab-all {
   background-color: rgb(29, 105, 171);
   padding: 3px 5px;
   color: #fff;
+}
+.menu-lab-all i{
+  margin-right: 6px;
+}
+input[id="Process"]:checked~.menu-lab-pro {
+  background-color: rgb(29, 105, 171);
+  padding: 3px 5px;
+  color: #fff;
+}
+.menu-lab-pro i{
+  margin-right: 6px;
 }
 
-input[id="Process"]:checked~.lab-pro {
-  background-color: rgb(29, 105, 171);
-  padding: 3px 5px;
-  color: #fff;
-}
+
 
 .list-note-buttons button {
   background-color: rgb(29, 105, 171);
@@ -128,33 +141,38 @@ input[id="Process"]:checked~.lab-pro {
   border-radius: 15px;
 }
 
-.note-list {
+.list-note-new {
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
 }
-.note-list span{
+
+.list-note-new span {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background: orange;
 }
-.note-list li {
+
+.list-note-new li {
   list-style: none;
   margin: 10px 0;
   cursor: pointer;
 }
 
-input[id='delete']{
+input[id='delete'] {
   display: none;
 }
-input[id='edit']{
+
+input[id='edit'] {
   display: none;
 }
-label[for='edit']{
+
+label[for='edit'] {
   padding-right: 10px;
 }
-.note-list li:nth-child(2):hover{
-    text-decoration: line-through;
+
+.list-note-new li:nth-child(2):hover {
+  text-decoration: line-through;
 }
