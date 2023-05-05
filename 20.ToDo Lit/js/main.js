@@ -81,12 +81,15 @@ btn.addEventListener('click', () => {
         });
 
         const del = document.querySelectorAll(".delete")
-        del.forEach(remove => {
-            remove.addEventListener('click', (element) => {
-                if (element.target.closest('.delete')) {
-                    element.target.closest('.list-note-new').remove()
-                }
-
+        let listNoteNew = document.querySelectorAll('.list-note-new')
+        this.del.addEventListener('click', () => {
+            listNoteNew.forEach(() => {
+                listNoteNew.addEventListener('click', element => {
+                    if(element.target.contains('.delete')){
+                        element.target.closest('.list-note-new').remove()
+                        // listNote.removeChild(element.target.closest('.list-note-new'))
+                    }
+                })
             })
         })
 
