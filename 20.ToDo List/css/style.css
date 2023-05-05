@@ -12,17 +12,23 @@ body {
     border-radius: 10px;
     padding: 35px 0 20px 0;
 }
-.list-login{
+
+.list-login {
     margin: 0 0 0 15px;
+    width: 265px;
+
 }
-.svg{
+
+.svg {
     width: 70px;
-    margin:-65px auto 0 105px;
+    margin: -65px auto 0 105px;
 }
-.sign{
+
+.sign {
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
 }
+
 label {
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -57,11 +63,16 @@ input {
 .pass-link {
     margin: -17px 5px -12px 59%;
 }
-input[type="checkbox"]{
+
+input[type="checkbox"] {
     width: 15px !important;
 }
-input[name='list-cookie']{
+
+input[name='list-cookie'] {
     margin-left: 15px !important;
+}
+.show{
+    margin:-15px 0 15px 0 ;
 }
 .show input {
     font-family: "Segoe UI", Arial, sans-serif;
