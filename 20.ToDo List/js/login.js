@@ -2,41 +2,30 @@ import { List } from "./Tasks.js";
 import { Tasks } from "./Tasks.js";
 import { admin } from "./admin.js"
 
-const list = document.querySelector('.list')
-const listLogin = document.querySelector('.list-login')
-const show = document.querySelector('#show')
-const logPass = document.querySelector('#login-pass')
 
-function myFunction() {
+const ShowIn = document.querySelector('#show-in')
+ShowIn.addEventListener('change', event=>{
     if (logPass.type === 'password') {
         logPass.type = 'text'
     } else {
         logPass.type = 'password'
     }
-}
-
-let login = document.querySelector('.list-log')
-const btn = document.querySelector('.btn')
-
-btn.addEventListener('DOMContentLoaded', () => {
-    if (login.value == "" || logPass.value == "") {
-        alert("You wrote nothing! Please check")
-    } else if (login.value != "" || logPass.value != "") {
-        let arr1 = new List({})
-        arr1.firstList()
-        arr1.secondList()
-        arr1.thirdList()
-        let arr = new Tasks({})
-        arr.renderTask()
-        arr.importantTask()
-        arr.deleteTask()
-    }
 })
 
 
+const login = document.querySelector('.list-log')
+const logPass = document.querySelector('#login-pass')
+const btn = document.querySelector('.btn')
 
-
-class Login {
-    constructor() { }
-
-}
+let i = 0
+btn.addEventListener('click', () => {
+    if (login.value == "" || logPass.value == "") {
+        alert("You wrote nothing! Please check")
+    } else if (login.value != "" || logPass.value != "") {
+        if (login.value == admin[i].login && logPass.value == admin[i].password) {
+            window.location.href = "../20.ToDo List/notes.html";
+        }else if(login.value != admin.login || logPass.value != admin.password){
+            alert("Wrong login or password")
+        }
+    }
+})

@@ -1,12 +1,12 @@
 let admin = [
     {
-        login:'admin',
-        password:"admin"
+        login: 'admin',
+        password: 'admin'
     },
     {
-        login:'Sultanbek',
-        password:"Sultanbek"
+        login: 'Sultanbek',
+        password: "Sultanbek"
     }
 ]
 
-export {admin}
+export { admin }

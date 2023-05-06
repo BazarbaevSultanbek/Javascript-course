@@ -1,52 +1,42 @@
+function  List(){
+    const list = document.querySelector('.list')
+    list.insertAdjacentHTML('beforebegin',
+        `<div class='header'>
+                <p class="header-logo">Tasks</p>
+                <div class='header-inputs'>
+                <input type='date' class='header-inputs-date'> 
+                <input type='text' class='header-inputs-text' placeholder='Add note'>
+                <button id='header-inputs-btn'>Add Note</button>
+                <label for="header-inputs-important" class="header-inputs-label">Important</label>
+                <input type='checkbox' id='header-inputs-important'>
+                </div>  
+                <div class='header-buttons'>
+                <button class='list-logOut'>LogOut</button>
+                <button class='list-profile'>My profile</button>
+                </div>
+                </div>`
+    )
 
 
-class List {
-
-    firstList() {
-        const list = document.querySelector('.list')
-        list.insertAdjacentHTML('beforebegin',
-            `<div class='header'>
-                    <p class="header-logo">Tasks</p>
-                    <div class='header-inputs'>
-                    <input type='date' class='header-inputs-date'> 
-                    <input type='text' class='header-inputs-text' placeholder='Add note'>
-                    <button id='header-inputs-btn'>Add Note</button>
-                    <label for="header-inputs-important" class="header-inputs-label">Important</label>
-                    <input type='checkbox' id='header-inputs-important'>
-                    </div>  
-                    <div class='header-buttons'>
-                    <button class='list-logOut'>LogOut</button>
-                    <button class='list-profile'>My profile</button>
-                    </div>
-                    </div>`
-        )
-    }
-
-    secondList() {
-
-        list.insertAdjacentHTML('afterend',
-            `<div class='menu'>
-        <input type='radio' name='radio-in' id='All'>
-        <label for="All" class='menu-lab-all'><i class="fa-regular fa-rectangle-list"></i>All</label>
-        
-        <input type='radio' name='radio-in' id='Process'>
-        <label for="Process" class='menu-lab-pro'><i class="fa-regular fa-calendar-check"></i>Process</label>
-        </div>`
-        )
-    }
-    thirdList() {
-        list.innerHTML = `   
-        <div class="list-radio">
-        <input type='text' class='list-search' placeholder='Search'>
-        <div class='list-note'>
-        </div>
-        </div>
-        `
-    }
-
+    list.insertAdjacentHTML('afterend',
+        `<div class='menu'>
+    <input type='radio' name='radio-in' id='All'>
+    <label for="All" class='menu-lab-all'><i class="fa-regular fa-rectangle-list"></i>All</label>
+    
+    <input type='radio' name='radio-in' id='Process'>
+    <label for="Process" class='menu-lab-pro'><i class="fa-regular fa-calendar-check"></i>Process</label>
+    </div>`
+    )
+    list.innerHTML = `   
+    <div class="list-radio">
+    <input type='text' class='list-search' placeholder='Search'>
+    <div class='list-note'>
+    </div>
+    </div>
+    `
 }
-
 export {List }
+
 
 const important = document.querySelector('#header-inputs-important')
 const btn = document.querySelector('#header-inputs-btn')
@@ -59,15 +49,7 @@ let noteNew
 
 
 class Tasks {
-    // constructor(date, note, time, important) {
-    //     this.date = date
-    //     this.note = note
-    //     this.time = time
-    //     this.important = important
-    // }
-
     renderTask() {
-        // this.button = button
         let i = 0
         btn.addEvenListener('click', () => {
             if (this.date != '' && this.note != '') {
@@ -113,14 +95,12 @@ class Tasks {
         });
     }
     deleteTask() {
-        // this.del = del
         let listNoteNew = document.querySelectorAll('.list-note-new')
         this.del.addEventListener('click', () => {
             listNoteNew.forEach(() => {
                 listNoteNew.addEventListener('click', element => {
                     if (element.target.contains('.delete')) {
                         element.target.closest('.list-note-new').remove()
-                        // listNote.removeChild(element.target.closest('.list-note-new'))
                     }
                 })
             })
@@ -129,8 +109,3 @@ class Tasks {
 }
 
 export { Tasks }
-// let arr = new Tasks({
-//     date: document.querySelector('.header-inputs-date')`,
-//     note: '',
-//     important: false,
-// })
