@@ -1,4 +1,4 @@
-function  List(){
+function List() {
     const list = document.querySelector('.list')
     list.insertAdjacentHTML('beforebegin',
         `<div class='header'>
@@ -29,13 +29,14 @@ function  List(){
     )
     list.innerHTML = `   
     <div class="list-radio">
-    <input type='text' class='list-search' placeholder='Search'>
+    <input type='text' class='list-search' placeholder='Search' id='search'>
     <div class='list-note'>
     </div>
     </div>
     `
 }
-export {List }
+List()
+export { List }
 
 
 const important = document.querySelector('#header-inputs-important')
@@ -44,15 +45,14 @@ const date = document.querySelector('.header-inputs-date')
 const note = document.querySelector('.header-inputs-text')
 const listNote = document.querySelector('.list-note')
 const time = new Date()
-let noteNew
 
 
 
 class Tasks {
     renderTask() {
         let i = 0
-        btn.addEvenListener('click', () => {
-            if (this.date != '' && this.note != '') {
+        btn.addEventListener('click', () => {
+            if (date.value != '' && note.value != '') {
                 const newNote = `
                 <ul class="list-note-new" id=${i}>
                                 <li class="note-new-text">${note.value}</li>
@@ -79,6 +79,7 @@ class Tasks {
         })
     }
     importantTask() {
+        let noteNew 
         if (important.checked == true) {
             noteNew.insertAdjacentHTML('afterbegin', `<span style='background:red' class='span-dot'></span>`)
         } else {
@@ -90,6 +91,8 @@ class Tasks {
                 if (element.target.classList.contains('note-new-text')) {
                     const listSpan = element.target.parentElement.querySelector(".span-dot")
                     listSpan.style.background = 'green'
+
+                    
                 }
             })
         });
@@ -108,4 +111,8 @@ class Tasks {
     }
 }
 
+let ins = new Tasks({})
+ins.renderTask()
+ins.importantTask()
+// ins.deleteTask()
 export { Tasks }

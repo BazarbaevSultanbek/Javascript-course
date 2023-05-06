@@ -10,3 +10,7 @@ let admin = [
 ]
 
 export { admin }
+
+export function addAdmin(username, password) {
+    admin.push({ login: username, password: password });
+}
