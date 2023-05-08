@@ -1,5 +1,3 @@
-import { List } from "./Tasks.js";
-import { Tasks } from "./Tasks.js";
 import { admin } from "./admin.js"
 
 
@@ -20,7 +18,7 @@ const btn = document.querySelector('.btn')
 let i = 0
 btn.addEventListener('click', () => {
     if (login.value == "" || logPass.value == "") {
-        alert("You wrote nothing! Please check")
+        alert(`You did not write password or email! Please check`)
     } else if (login.value != "" || logPass.value != "") {
         if (login.value == admin[i].login && logPass.value == admin[i].password) {
             window.location.href = "../20.ToDo List/notes.html";

@@ -1,7 +1,10 @@
+
 import { notes } from "./notes.js"
 import { impNotes } from "./notes.js"
 import { doneNotes } from "./notes.js"
 // import { addNotes } from "./notes.js"
+
+
 
 function List() {
     const list = document.querySelector('.list')
@@ -55,7 +58,10 @@ const time = new Date()
 
 
 class Tasks {
-    renderTask(){
+
+    renderTask() {
+        let i = 0
+
         btn.addEventListener('click', () => {
             if (date.value != '' && note.value != '') {
                 const newNote = `
@@ -81,6 +87,7 @@ class Tasks {
         })
     }
     importantTask() {
+
         btn.addEventListener('click', () => {
             if (important.checked == true) {
                 let noteNew = document.querySelector('.list-note-new')
@@ -102,6 +109,25 @@ class Tasks {
                 })
             });
         })
+
+        let noteNew 
+        if (important.checked == true) {
+            noteNew.insertAdjacentHTML('afterbegin', `<span style='background:red' class='span-dot'></span>`)
+        } else {
+            noteNew.insertAdjacentHTML('afterbegin', `<span style='background:orange' class='span-dot'></span>`)
+        }
+        const noteText = document.querySelectorAll(".note-new-text")
+        noteText.forEach(color => {
+            color.addEventListener('click', (element) => {
+                if (element.target.classList.contains('note-new-text')) {
+                    const listSpan = element.target.parentElement.querySelector(".span-dot")
+                    listSpan.style.background = 'green'
+
+                    
+                }
+            })
+        });
+
     }
     deleteTask() {
         let listNoteNew = document.querySelectorAll('.list-note-new')
