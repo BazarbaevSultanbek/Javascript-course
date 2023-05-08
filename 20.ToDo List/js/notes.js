@@ -1,19 +1,9 @@
-let notes = [{
-    notes: 'adaddsaadsdsa',
-    date:"20/10/22022",
-    status:important
+let notes = [
 
-}
 ]
+
 export { notes }
 
-export function addANotes(text, dateNum, cases) {
-    admin.push({
-        notes: text,
-        date: dateNum,
-        status: cases
-    });
-}
 
 
 // let root = document.querySelector("#root")
@@ -42,7 +32,7 @@ export function addANotes(text, dateNum, cases) {
 // let tasks = JSON.parse(localStorage.getItem("tasks"));
 
 // tasks.map((task)=>{
-//     root.insertAdjacentHTML("afterbegin", 
+//     root.insertAdjacentHTML("afterbegin",
 //     `<div>
 //         <h2>${task.name}</h2>
 //         <span>${task.data}</span>

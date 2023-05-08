@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class='header'>
+        <p class="header-logo">Tasks</p>
+        <div class='header-inputs'>
+            <form action="addNote" class="form-add">
+                <input type='date' class='header-inputs-date'>
+                <input type='text' class='header-inputs-text' placeholder='Add note'>
+                <button id='header-inputs-btn'>Add Note</button>
+                <label for="header-inputs-important" class="header-inputs-label">Important</label>
+                <input type='checkbox' id='header-inputs-important'>
+            </form>
+        </div>
+        <div class='header-buttons'>
+            <button class='list-logOut'>LogOut</button>
+            <button class='list-profile'>My profile</button>
+        </div>
+    </div>
+    <div class="list">
+        <div class="list-radio">
+            <input type='text' class='list-search' placeholder='Search' id='search'>
+            <div class='list-note'>
+
+            </div>
+        </div>
+    </div>
+    <div class='menu'>
+        <input type='radio' name='radio-in' id='All'>
+        <label for="All" class='menu-lab-all'><i class="fa-regular fa-rectangle-list"></i>All</label>
+
+        <input type='radio' name='radio-in' id='Process'>
+        <label for="Process" class='menu-lab-pro'><i class="fa-regular fa-calendar-check"></i>Process</label>
+    </div>
+
+    <script type="module" src="js/Tasks.js"></script>
+    <script type="module" src="js/admin.js"></script>
+
+</body>
+
+</html>

@@ -21,7 +21,7 @@ btn.addEventListener('click', () => {
         alert(`You did not write password or email! Please check`)
     } else if (login.value != "" || logPass.value != "") {
         if (login.value == admin[i].login && logPass.value == admin[i].password) {
-            window.location.href = "../20.ToDo List/notes.html";
+            window.location.href = "../20.ToDo List/index.html";
         }else if(login.value != admin.login || logPass.value != admin.password){
             alert("Wrong login or password")
         }

@@ -23,6 +23,6 @@ btn.addEventListener('click', () => {
         form.reset()
     } else {
         addAdmin(logEm.value,logPass.value)
-        window.location.href = "../20.ToDo List/notes.html";
+        window.location.href = "../20.ToDo List/index.html";
     }
 })
