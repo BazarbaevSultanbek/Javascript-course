@@ -1,6 +1,7 @@
-let notes = [
+import { todo } from "./Tasks.js";
 
-]
+let notes = []
+notes.push(todo)
 
 export { notes }
 
