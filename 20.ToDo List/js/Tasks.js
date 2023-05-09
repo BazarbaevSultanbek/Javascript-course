@@ -20,12 +20,12 @@ function setTodo() {
 
 class Tasks {
     renderTask() {
+        let i = 0
         form.addEventListener('submit', (element) => {
             element.preventDefault()
             const title = note.value.trim()
             if (date.value != '' && title.length) {
                 todo.push({ text: title, date: date.value, current, status: status })
-                console.log(status);
                 setTodo()
                 appearDisplay()
             } else {
@@ -39,7 +39,7 @@ class Tasks {
             listNote.innerHTML = ''
             todo.forEach((item) => {
                 listNote.innerHTML += `
-                <ul class="list-note-new">
+                <ul class="list-note-new" id="${i}">
                 <li class="note-new-text">${item.text}</li>
                 <li class='note-new-date'>${item.date}</li>
                 <li>${item.current}</li>
@@ -51,28 +51,37 @@ class Tasks {
                 </div>
                 </ul>
                 `
-                let noteNew = document.querySelector('.list-note-new')
+                let noteNew = document.querySelectorAll('.list-note-new')
+                let noteNewArr = Array.prototype.slice.call(noteNew)
+                
                 let status
                 if (important.checked == true) {
-                    noteNew.insertAdjacentHTML('afterbegin', `<span style='background:red' class='span-dot'></span>`)
-                    status = 'important'
-                } else {
-                    noteNew.insertAdjacentHTML('afterbegin', `<span style='background:orange' class='span-dot'></span>`)
-                    status = 'usually'
-                }
-                const noteText = document.querySelectorAll(".note-new-text")
-                noteText.forEach(color => {
-                    color.addEventListener('click', (element) => {
-                        if (element.target.classList.contains('note-new-text')) {
-                            let listSpan = element.target.parentElement.querySelector(".span-dot")
-                            listSpan.style.background = 'green'
-                            status = 'done'
-                        }
+                    noteNewArr.forEach((item)=>{
+                        item.target.insertAdjacentHTML('afterbegin', `<span style='background:red' class='span-dot'></span>`)
+                        status = 'important'
+                        console.log(item);
                     })
-                });
+                 } else {
+                    noteNewArr.forEach((item)=>{
+                        item.target.insertAdjacentHTML('afterbegin', `<span style='background:'orange' class='span-dot'></span>`)
+                        status = 'usually'
+                    })
+                }
+                // const noteText = document.querySelectorAll(".note-new-text")
+                // noteText.forEach(color => {
+                //     color.addEventListener('click', (element) => {
+                //         if (element.target.classList.contains('note-new-text')) {
+                //             let listSpan = element.target.parentElement.querySelector(".span-dot")
+                //             listSpan.style.background = 'green'
+                //             status = 'done'
+                //         }
+                //     })
+                // });
+                // console.log(status);
+                console.log(noteNewArr);
             });
         }
-
+        i++
     }
 
 }
