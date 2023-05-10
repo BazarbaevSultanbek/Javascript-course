@@ -1,134 +1,49 @@
-const form = document.querySelector('.form-add')
-const noteNew = document.querySelectorAll('.list-note-new')
-const important = document.querySelector('#header-inputs-important')
-const date = document.querySelector('.header-inputs-date')
-const note = document.querySelector('.header-inputs-text')
+import Utils from "./utils.js";
+
+
 let listNote = document.querySelector('.list-note')
-const time = new Date()
-const current = time.getHours() + ":" + time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes()
 
 
+export default class Tasks {
 
-export let todo = JSON.parse(localStorage.getItem('tasks')) ? JSON.parse(localStorage.getItem('tasks')) : []
-function setTodo() {
-    localStorage.setItem('tasks', JSON.stringify(todo))
-}
+    constructor() {
+        this.tasks = new Utils().tasksFromLocalStorage()
+    }
 
+    renderTask(tasks) {
+        listNote.innerHTML = ''
+        tasks.forEach((item) => {
+            listNote.insertAdjacentHTML("afterbegin", `
+                    <li class="list-note-new" id="${item.id}">
+                        <span class='span-dot' style="background: ${item.status === "important" ? "red" : "orange"}"></span>
+                        <p class="note-new-text" ${item.status === "done" ? "done" : ""}">${item.text}</p>
+                        <span class='note-new-date'>${item.date}</span>
+                        <span><i class="fa-solid fa-pen-to-square edit" style="color: #ffd43b;"></i></span>
 
-class Tasks {
-    renderTask() {
-        let i = 0
-        let status = ''
-
-        function appearDisplay() {
-            const todo = JSON.parse(localStorage.getItem('tasks')) || []
-            listNote.innerHTML = ''
-            todo.forEach((item) => {
-                listNote.innerHTML += `
-                <ul class="list-note-new" id="${i}">
-                <span class='span-dot' style="background: ${item.status === "important" ? "red" : "orange"}"></span>
-                <li class="note-new-text" ${item.status === "done" ? "done" : ""}">${item.text}</li>
-                <li class='note-new-date'>${item.date}</li>
-                <li>${item.current}</li>
-                <div>
-                <input type="checkbox" id='edit'>
-                <label for="edit"><i class="fa-solid fa-pen-to-square" style="color: #ffd43b;"></i></label>
-                <input type="checkbox" id='delete' class='delete'>
-                <label for='delete'><i class="fa-solid fa-trash" style="color:rgb(29,105,171)"></i></label>
-                </div>
-                </ul>
-                `
-            });
-
-
-        }
-        appearDisplay()
-
-
-
-
-
-
-        form.addEventListener('submit', (element) => {
-            element.preventDefault()
-            let title = note.value.trim()
-            if (date.value != '' && title.length) {
-                if (important.checked) {
-                    status = "important";
-                    listNote.addEventListener('click', (el) => {
-                        if (el.target.closest('.note-new-text')) {
-                            let listSpan = el.target.parentElement.querySelector('.span-dot')
-                            listSpan.style.background = 'green'
-                            el.target.closest('.note-new-text').style.textDecoration = 'line-through'
-                            status = 'done'
-                        }
-                    })
-                } else {
-                    status = "common";
-                    listNote.addEventListener('click', (el) => {
-                        if (el.target.closest('.note-new-text')) {
-                            let listSpan = el.target.parentElement.querySelector('.span-dot')
-                            listSpan.style.background = 'green'
-                            el.target.closest('.note-new-text').style.textDecoration = 'line-through'
-                            status = 'done'
-                        }
-                    })
-                }
-                setTodo()
-                appearDisplay()
-
-                todo.push({ text: note.value, date: date.value, current, status: status })
-            }
-
-            else {
-                alert('Select your date and write note!')
-                form.reset()
-            }
-
-        })
-        function deleteTodo() {
-            const deleted = todo.filter((index) => { return index !== i })
-            console.log(deleted);
-            todo = deleted
-            setTodo()
-            appearDisplay()
-        };
-        let dels = document.querySelectorAll('.delete');
-        dels.forEach((del) => {
-            del.addEventListener('click', deleteTodo)
-            console.log('1');
+                        <span><i class="fa-solid fa-trash fa-beat-fade delete" style="color: #1d69ab;"></i></span> 
+                    </li>
+                `)
         });
+    }
 
-        i++
+    deleteTasks(id) {
+        let filteredTasks = this.tasks.filter((item) => item.id !== id);
+        listNote.innerHTML = '';
+        this.renderTask(this.tasks);
     }
 }
-let instance = new Tasks()
-instance.renderTask()
-// instance.searchTask()
 
 
-    // searchTask(text) {
-    //     this.text = text
-    //     const search = document.querySelector('.list-search')
-    //     const searchBTN = document.querySelector(".search-btn")
-    //     searchBTN.addEventListener('click', () => {
-    //         if (search.value != '') {
-    //             let lowertext = search.value.toLowerCase()
-    //             let noteNewArr = Array.prototype.slice.call(noteNew)
-    //             console.log(noteNewArr.value);
-    //             for (let i = 0; i < listNote.length; i++) {
-    //                 let textValue = note.textContent || note.innerText
-    //                 if (textValue.toLowerCase().indexOF(filter) < -1) {
-    //                     note[i].style.display = ""
-    //                 } else {
-    //                     note[i].style.display = 'none'
-    //                 }
-    //             }
-    //         } else {
-    //             alert('write something!')
-    //         }
-    //     })
-    // }
+
+
+
+
+
+
+
+
+
+
 // class Tasks {
 //     renderTask() {
 //         let i = 0
