@@ -13,7 +13,7 @@ listNote.addEventListener("click", (e) => {
         let id = e.target.closest('.list-note-new').id
         console.log(id);
         new Tasks().deleteTasks(id)
-
+        
     }
 })
 
