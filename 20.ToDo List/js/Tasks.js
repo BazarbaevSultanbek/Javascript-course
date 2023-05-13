@@ -32,7 +32,12 @@ export default class Tasks {
         localStorage.setItem('tasks', JSON.stringify(tasks));
         this.renderTask(tasks);
     }
+    getTasks(id){
+        let findTask = this.tasks.filter((item) => item.id == id)
+        console.log(findTask);
+        return [findTask[0].text, findTask[0].date]
 
+    }
     deleteTasks(id) {
         let filteredTasks = this.tasks.filter((item) => item.id != id);
         listNote.innerHTML = ''
