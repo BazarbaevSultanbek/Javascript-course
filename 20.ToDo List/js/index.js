@@ -9,6 +9,8 @@ let text = document.querySelector('.header-inputs-text');
 let important = document.querySelector('#header-inputs-important');
 let addButton = document.querySelector('#header-inputs-btn');
 let lighter = document.querySelector('.span-dot')
+
+
 new Tasks().renderTask(tasks);
 addButton.addEventListener("click", () => {
     if (date.value != '' && text.value != '') {
@@ -27,10 +29,11 @@ listNote.addEventListener("click", (e) => {
     console.log(e.target.classList.contains('edit'));
     if (e.target.classList.contains('edit')) {
         let id = e.target.closest('.list-note-new').id
-        let textModule = document.querySelector('.edit-module-text')
-        let dateModule = document.querySelector('.edit-module-date')
         let [text, date] = new Tasks().getTasks(id)
-
+        
+ 
+        
+        
         listNote.insertAdjacentHTML('beforeend', `  
         <div class='module'>
         <div class='edit-module'>
@@ -42,6 +45,14 @@ listNote.addEventListener("click", (e) => {
         </div>
         </div>        
         `)
+        let SaveBtn = document.querySelector('#btn-save')
+        let textModule = document.querySelector('.edit-module-text')
+        let dateModule = document.querySelector('.edit-module-date')
+        
+        SaveBtn.addEventListener('click', () => {
+            new Tasks().editTasks(id)
+            let [textModule, dateModule] = new Tasks().editTasks(id)
+        })
     }
 })
 

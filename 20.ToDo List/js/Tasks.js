@@ -11,7 +11,7 @@ export default class Tasks {
         this.tasks = new Utils().tasksFromLocalStorage()
     }
 
-    renderTask(tasks) { 
+    renderTask(tasks) {
         listNote.innerHTML = ''
         tasks.forEach((item) => {
             listNote.insertAdjacentHTML("afterbegin", `
@@ -26,17 +26,21 @@ export default class Tasks {
         });
     }
 
-    addTask(data){
-        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        tasks.push(data)
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        this.renderTask(tasks);
+    addTask(data) {
+        this.tasks = JSON.parse(localStorage.getItem("tasks") ||'[]');
+        this.tasks.push(data)
+        localStorage.setItem('tasks', JSON.stringify(this.tasks));
+        this.renderTask(this.tasks);
     }
-    getTasks(id){
+    getTasks(id) {
         let findTask = this.tasks.filter((item) => item.id == id)
         console.log(findTask);
         return [findTask[0].text, findTask[0].date]
 
+    }
+    editTasks(id) {
+        let findTask = this.tasks.filter((item) => item.id == id)
+        return [findTask[0].text, findTask[0].date]
     }
     deleteTasks(id) {
         let filteredTasks = this.tasks.filter((item) => item.id != id);
