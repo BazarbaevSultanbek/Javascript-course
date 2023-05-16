@@ -24,11 +24,8 @@ addButton.addEventListener("click", () => {
     }
 })
 listNote.addEventListener("click", (e) => {
-    console.log(e.target.classList.contains('edit'));
     if (e.target.classList.contains('edit')) {
         let id = e.target.closest('.list-note-new').id
-        let textModule = document.querySelector('.edit-module-text')
-        let dateModule = document.querySelector('.edit-module-date')
         let [text, date] = new Tasks().getTasks(id)
 
         listNote.insertAdjacentHTML('beforeend', `  
@@ -37,14 +34,25 @@ listNote.addEventListener("click", (e) => {
         <input type='text' class='edit-module-text' value="${text}" placeholder='Change note'>
         <input type='date' class='edit-module-date' value="${date}">
         <div class='edit-module-button'>
-        <button id='btn-exit'>Exit</button>
-        <button id='btn-save'>Save</button>
+        <button class='btn-exit'>Exit</button>
+        <button class='btn-save'>Save</button>
         </div>
         </div>        
         `)
+        let moduleText = document.querySelector('.edit-module-text')
+        let moduleDate = document.querySelector('.edit-module-date')
+        let saver = document.querySelector('.btn-save')
+
+        saver.addEventListener('click', () => {
+            let edit = new Tasks().editTasks(id, moduleText.value, moduleDate.value)
+            localStorage.setItem('tasks', JSON.stringify(edit));
+        })
+    }
+
+    if (e.target.classList.contains('btn-exit')) {
+        e.target.closest('.module').style.display = 'none'
     }
 })
-
 
 listNote.addEventListener("click", (e) => {
     if (e.target.classList.contains('delete')) {
@@ -55,3 +63,10 @@ listNote.addEventListener("click", (e) => {
 })
 
 
+listNote.addEventListener('click', (e) => {
+    if (e.target.classList.contains('.note-new-text')) {
+        let id = e.target.closest('.list-note-new').id
+        new Tasks().updateStatus(id, 'done')
+        lighter.style.background = 'green'
+    }
+})
