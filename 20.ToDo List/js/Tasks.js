@@ -27,6 +27,10 @@ export default class Tasks {
     }
 
     addTask(data) {
+<<<<<<< HEAD
+=======
+        this.tasks = JSON.parse(localStorage.getItem("tasks") ||'[]');
+>>>>>>> 2b899aa8413d34629172018cd32d85e908a968ee
         this.tasks.push(data)
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
         this.renderTask(this.tasks);
@@ -37,6 +41,7 @@ export default class Tasks {
         return [findTask[0].text, findTask[0].date]
 
     }
+<<<<<<< HEAD
     editTasks(id, text, date) {
         let findTask = this.tasks.filter((item) => item.id == id);
         findTask[0].text = text;
@@ -45,6 +50,12 @@ export default class Tasks {
         return this.tasks;
     }
 
+=======
+    editTasks(id) {
+        let findTask = this.tasks.filter((item) => item.id == id)
+        return [findTask[0].text, findTask[0].date]
+    }
+>>>>>>> 2b899aa8413d34629172018cd32d85e908a968ee
     deleteTasks(id) {
         let filteredTasks = this.tasks.filter((item) => item.id != id);
         listNote.innerHTML = ''
