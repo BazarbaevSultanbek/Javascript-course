@@ -228,8 +228,19 @@ input[id="Process"]:checked ~ .menu-lab-pro {
 input[id="header-inputs-important"] {
   display: none;
 }
-.header-inputs-label {
+.header-inputs-label{
   position: relative;
+  margin:0 23px 0 0px;
+}
+.header-inputs-div {
+  position: absolute;
+  top: 2px;
+  left: 15%;
+  width: 40px;
+  height: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+  z-index: 1;
 }
 .header-inputs-label::before {
   content: "";
@@ -238,19 +249,14 @@ input[id="header-inputs-important"] {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  margin-left: 1px;
+  left: 1px;
   top: -0.1px;
   filter: blur(1px);
   /* box-shadow: -2px 2px  40px 0px rgba(63, 89, 109, 0.58); */
   transition: 0.5s all linear;
-}
-.header-inputs-label::after {
-  content: "";
-  border: 1px solid black;
-  padding: 0.5px 26px;
-  border-radius: 15px;
+  z-index: 2;
 }
 input[id="header-inputs-important"]:checked ~ .header-inputs-label::before {
-  margin-left: 30.7px;
+  margin-left: 21px;
   background-color: red;
 }

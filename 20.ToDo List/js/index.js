@@ -8,8 +8,8 @@ let date = document.querySelector('.header-inputs-date');
 let text = document.querySelector('.header-inputs-text');
 let important = document.querySelector('#header-inputs-important');
 let addButton = document.querySelector('#header-inputs-btn');
-let lighter = document.querySelector('.span-dot')
 let searchBtn = document.querySelector('#search-btn')
+let lighter = document.querySelector('.span-dot')
 
 new Tasks().renderTask(tasks);
 addButton.addEventListener("click", () => {
@@ -65,15 +65,18 @@ listNote.addEventListener("click", (e) => {
 })
 
 listNote.addEventListener('click', (e) => {
-    console.log(e.target.classList.contains('note-new-text'));
-    e.target.closest.lighter.style.background = 'green'
     if (e.target.classList.contains('note-new-text')) {
         let id = e.target.closest('.list-note-new').id
         new Tasks().updateStatus(id)
+        new Tasks().renderTask(tasks); 
     }
 })
 
-searchBtn.addEventListener('click', () => {
-    let search = document.querySelector('.list-search').value.toLowerCase()
-    new Tasks().searchNote(search)
+
+
+
+let search = document.querySelector('.list-search')
+search.addEventListener('input', () => {
+
+    new Tasks().searchNote(search.value.toLowerCase())
 })

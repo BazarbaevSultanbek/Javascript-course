@@ -51,14 +51,17 @@ export default class Tasks {
         localStorage.setItem('tasks', JSON.stringify(filteredTasks));
         this.renderTask(filteredTasks);
     }
-    updateStatus(id, status) {
-        let findTasks = this.tasks.filter((item) => item.id != id);
-        this.renderTask(this.tasks);
-        return this.tasks
+    updateStatus(id) {
+        let findTasks = this.tasks.filter((item) => item.id == id);
+        findTasks[0].status = "completed"
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        // this.tasks = JSON.parse(localStorage.getItem("tasks"));
+        // return this.renderTask(this.tasks)
     }
+
     searchNote(text) {
         let filterNotes = this.tasks.filter((item) => {
-            return item.text.toLowerCase() == text
+            return item.text.toLowerCase().startsWith(text);
         }
         )
         this.renderTask(filterNotes)
