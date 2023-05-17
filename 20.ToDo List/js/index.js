@@ -9,7 +9,7 @@ let text = document.querySelector('.header-inputs-text');
 let important = document.querySelector('#header-inputs-important');
 let addButton = document.querySelector('#header-inputs-btn');
 let lighter = document.querySelector('.span-dot')
-
+let searchBtn = document.querySelector('#search-btn')
 
 new Tasks().renderTask(tasks);
 addButton.addEventListener("click", () => {
@@ -29,10 +29,6 @@ listNote.addEventListener("click", (e) => {
     if (e.target.classList.contains('edit')) {
         let id = e.target.closest('.list-note-new').id
         let [text, date] = new Tasks().getTasks(id)
-        
- 
-        
-        
         listNote.insertAdjacentHTML('beforeend', `  
         <div class='module'>
         <div class='edit-module'>
@@ -44,7 +40,7 @@ listNote.addEventListener("click", (e) => {
         </div>
         </div>        
         `)
-<<<<<<< HEAD
+
         let moduleText = document.querySelector('.edit-module-text')
         let moduleDate = document.querySelector('.edit-module-date')
         let saver = document.querySelector('.btn-save')
@@ -57,16 +53,6 @@ listNote.addEventListener("click", (e) => {
 
     if (e.target.classList.contains('btn-exit')) {
         e.target.closest('.module').style.display = 'none'
-=======
-        let SaveBtn = document.querySelector('#btn-save')
-        let textModule = document.querySelector('.edit-module-text')
-        let dateModule = document.querySelector('.edit-module-date')
-        
-        SaveBtn.addEventListener('click', () => {
-            new Tasks().editTasks(id)
-            let [textModule, dateModule] = new Tasks().editTasks(id)
-        })
->>>>>>> 2b899aa8413d34629172018cd32d85e908a968ee
     }
 })
 
@@ -78,7 +64,6 @@ listNote.addEventListener("click", (e) => {
     }
 })
 
-
 listNote.addEventListener('click', (e) => {
     console.log(e.target.classList.contains('note-new-text'));
     e.target.closest.lighter.style.background = 'green'
@@ -86,4 +71,9 @@ listNote.addEventListener('click', (e) => {
         let id = e.target.closest('.list-note-new').id
         new Tasks().updateStatus(id)
     }
+})
+
+searchBtn.addEventListener('click', () => {
+    let search = document.querySelector('.list-search').value.toLowerCase()
+    new Tasks().searchNote(search)
 })

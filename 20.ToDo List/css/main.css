@@ -214,7 +214,7 @@ input[id="Process"]:checked ~ .menu-lab-pro {
 .list-note-new p:hover {
   text-decoration: line-through;
 }
-.search-btn {
+#search-btn {
   background-color: rgb(29, 105, 171);
   color: white;
   font-size: 18px;
@@ -223,6 +223,7 @@ input[id="Process"]:checked ~ .menu-lab-pro {
   padding: 5px 10px;
   border: none;
   margin-left: 15px;
+  cursor: pointer;
 }
 input[id="header-inputs-important"] {
   display: none;
