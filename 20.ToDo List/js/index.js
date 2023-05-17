@@ -64,9 +64,10 @@ listNote.addEventListener("click", (e) => {
 
 
 listNote.addEventListener('click', (e) => {
-    if (e.target.classList.contains('.note-new-text')) {
+    console.log(e.target.classList.contains('note-new-text'));
+    e.target.closest.lighter.style.background = 'green'
+    if (e.target.classList.contains('note-new-text')) {
         let id = e.target.closest('.list-note-new').id
-        new Tasks().updateStatus(id, 'done')
-        lighter.style.background = 'green'
+        new Tasks().updateStatus(id)
     }
 })

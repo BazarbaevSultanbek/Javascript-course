@@ -51,9 +51,9 @@ export default class Tasks {
         localStorage.setItem('tasks', JSON.stringify(filteredTasks));
         this.renderTask(filteredTasks);
     }
-    updateStatus(id, status) {
+    updateStatus(id,status) {
         let findTasks = this.tasks.filter((item) => item.id != id);
-        status = findTasks[0].status
+        // findTasks[0].status
         this.renderTask(this.tasks);
         return this.tasks
     }
