@@ -1,3 +1,8 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     background: url(../img/space\ wallpaper\ 5.jpg) no-repeat;
     background-size: 100% 100%;

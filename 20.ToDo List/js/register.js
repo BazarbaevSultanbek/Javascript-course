@@ -1,5 +1,5 @@
-import {admin} from "./admin.js";
-import {addAdmin} from "./admin.js";
+import { admin } from "./admin.js";
+import { addAdmin } from "./admin.js";
 
 
 const newDiv = document.querySelector('.list')
@@ -17,12 +17,16 @@ ShowIn.addEventListener('change', () => {
 })
 
 const btn = document.querySelector('.btn')
-btn.addEventListener('click', () => {
+export default btn.addEventListener('click', () => {
     if (logPass.value == '' || logEm.value == '' || listCookie.checked != true) {
         alert(`You did not write password or email or you don't accept cookies ! Please check`)
         form.reset()
-    } else {
-        addAdmin(logEm.value,logPass.value)
+    } else if (logPass.value == admin[0].login && logEm.value == admin[0].password) {
+        alert('You have already registered!')
+    }
+    else {
+        addAdmin(logEm.value, logPass.value)
+        
         window.location.href = "../20.ToDo List/index.html";
     }
 })

@@ -10,6 +10,18 @@ body {
   background: wheat;
   position: relative;
 }
+.notification {
+  top: 50%;
+  background-color: orange;
+  padding: 7px 5px;
+  border-radius: 5px;
+  width: 200px;
+  position: absolute;
+  right: 0;
+  color: white;
+  font-family: 'Open Sans',sans-serif;
+}
+
 
 .header {
   display: flex;
@@ -93,7 +105,7 @@ button[id="header-inputs-btn"] {
 }
 
 .menu label {
-  padding: 3px 5px;
+  padding: 10px 15px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -109,19 +121,22 @@ button[id="header-inputs-btn"] {
   border-color: rgb(29, 105, 171);
 }
 
-input[id="All"]:checked ~ .menu-lab-all {
+input[id="All"]:checked~.menu-lab-all {
   background-color: rgb(29, 105, 171);
-  padding: 3px 5px;
+  padding: 11px 16px;
   color: #fff;
 }
+
 .menu-lab-all i {
   margin-right: 6px;
 }
-input[id="Process"]:checked ~ .menu-lab-pro {
+
+input[id="Process"]:checked~.menu-lab-pro {
   background-color: rgb(29, 105, 171);
-  padding: 3px 5px;
+  padding: 11px 16px;
   color: #fff;
 }
+
 .menu-lab-pro i {
   margin-right: 6px;
 }
@@ -150,6 +165,7 @@ input[id="Process"]:checked ~ .menu-lab-pro {
   padding: 15px 0px 15px 50px;
   margin-top: 15px;
 }
+
 .module {
   position: fixed;
   top: 0;
@@ -162,6 +178,7 @@ input[id="Process"]:checked ~ .menu-lab-pro {
   justify-content: center;
   align-items: center;
 }
+
 .edit-module {
   width: 270px;
   height: 170px;
@@ -169,27 +186,31 @@ input[id="Process"]:checked ~ .menu-lab-pro {
   padding: 15px 24px;
   border: 1px solid black;
 }
+
 .edit-module input {
   margin: 5px 0;
   width: 220px;
   height: 30px;
   padding: 0 5px;
 }
+
 .edit-module-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 15px 0;
 }
-.edit-module-button button:nth-child(1){
+
+.edit-module-button button:nth-child(1) {
   padding: 6px 9px;
   background-color: orange;
   border: none;
   border-radius: 5px;
 }
-.edit-module-button button:nth-child(2){
+
+.edit-module-button button:nth-child(2) {
   padding: 6px 9px;
-  background-color:rgb(29, 105, 171);
+  background-color: rgb(29, 105, 171);
   border: none;
   border-radius: 5px;
 }
@@ -201,12 +222,15 @@ input[id="Process"]:checked ~ .menu-lab-pro {
   background: orange;
   margin-right: 25px;
 }
+
 .note-new-text {
   width: 45%;
 }
+
 .note-new-date {
   margin: 0 200px 0 90px;
 }
+
 .edit {
   margin-right: 10px;
 }
@@ -214,27 +238,19 @@ input[id="Process"]:checked ~ .menu-lab-pro {
 .list-note-new p:hover {
   text-decoration: line-through;
 }
-#search-btn {
-  background-color: rgb(29, 105, 171);
-  color: white;
-  font-size: 18px;
-  border-radius: 5px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 5px 10px;
-  border: none;
-  margin-left: 15px;
-  cursor: pointer;
-}
+
 input[id="header-inputs-important"] {
   display: none;
 }
-.header-inputs-label{
+
+.header-inputs-label {
   position: relative;
-  margin:0 23px 0 0px;
+  margin: 0 23px 0 0px;
 }
+
 .header-inputs-div {
   position: absolute;
-  top: 2px;
+  top: 4px;
   left: 15%;
   width: 40px;
   height: 15px;
@@ -242,6 +258,7 @@ input[id="header-inputs-important"] {
   border-radius: 15px;
   z-index: 1;
 }
+
 .header-inputs-label::before {
   content: "";
   position: absolute;
@@ -249,14 +266,46 @@ input[id="header-inputs-important"] {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  left: 1px;
+  left: 3px;
   top: -0.1px;
-  filter: blur(1px);
   /* box-shadow: -2px 2px  40px 0px rgba(63, 89, 109, 0.58); */
   transition: 0.5s all linear;
   z-index: 2;
 }
-input[id="header-inputs-important"]:checked ~ .header-inputs-label::before {
-  margin-left: 21px;
+
+input[id="header-inputs-important"]:checked~.header-inputs-label::before {
+  margin-left: 17px;
   background-color: red;
 }
+
+body {
+  position: relative;
+}
+
+.process {
+  display: none;
+}
+
+.process-info {
+  position: absolute;
+  left: 55%;
+  top: 130px;
+  display: flex;
+  transform: translateX(-40%);
+  gap: 250px;
+}
+
+.process-status-notes {
+  border-right: 1px solid black;
+  height: 700px;
+  padding-right: 54px;
+  width: 200px;
+}
+
+.process-status-div p {
+  font-size: 23px;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: capitalize;
+  margin-left: -67px;
+}
+

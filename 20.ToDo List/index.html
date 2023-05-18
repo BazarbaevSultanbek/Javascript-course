@@ -23,7 +23,9 @@
                 <input type='date' class='header-inputs-date'>
                 <input type='text' class='header-inputs-text' placeholder='Add note'>
                 <input type='checkbox' id='header-inputs-important'>
-                <label for="header-inputs-important" class="header-inputs-label"></label>
+                <label for="header-inputs-important" class="header-inputs-label">
+                    <div class="header-inputs-div"></div>
+                </label>
                 <button id='header-inputs-btn'>Add Note</button>
             </div>
         </div>
@@ -35,14 +37,34 @@
     <div class="list">
         <div class="list-radio">
             <input type='text' class='list-search' placeholder='Search' id='search'>
-            <button id="search-btn">Search</button>
-            <ul class='list-note'>  
+            <ul class='list-note'>
 
             </ul>
         </div>
     </div>
+
+    <div class="process">
+
+        <div class="process-info">
+            <div class="process-status-div">
+                <p>in process</p>
+                <div class="process-status-notes"></div>
+            </div>
+            <div class="process-status-div">
+                <p>important</p>
+                <div class="process-status-notes"></div>
+            </div>
+            <div class="process-status-div">
+                <p>Done</p>
+                <div class="process-status-notes"></div>
+
+            </div>
+        </div>
+
+    </div>
+
     <div class='menu'>
-        <input type='radio' name='radio-in' id='All'>
+        <input type='radio' name='radio-in' id='All' checked>
         <label for="All" class='menu-lab-all'><i class="fa-regular fa-rectangle-list"></i>All</label>
 
         <input type='radio' name='radio-in' id='Process'>
