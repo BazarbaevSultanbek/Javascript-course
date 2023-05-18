@@ -9,7 +9,6 @@ let text = document.querySelector('.header-inputs-text');
 let important = document.querySelector('#header-inputs-important');
 let addButton = document.querySelector('#header-inputs-btn');
 let searchBtn = document.querySelector('#search-btn')
-let lighter = document.querySelector('.span-dot')
 
 new Tasks().renderTask(tasks);
 addButton.addEventListener("click", () => {
@@ -19,7 +18,7 @@ addButton.addEventListener("click", () => {
             text: text.value,
             date: date.value,
             important: important.checked == true ? true : false,
-            status: "todo"
+            status:false
         })
     } else {
         alert('Please add date and text !');
@@ -66,9 +65,8 @@ listNote.addEventListener("click", (e) => {
 
 listNote.addEventListener('click', (e) => {
     if (e.target.classList.contains('note-new-text')) {
-        let id = e.target.closest('.list-note-new').id
+        let id = e.target.closest('.list-note-new').id 
         new Tasks().updateStatus(id)
-        new Tasks().renderTask(tasks); 
     }
 })
 

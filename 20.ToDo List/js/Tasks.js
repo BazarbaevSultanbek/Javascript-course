@@ -4,7 +4,7 @@ import Utils from "./utils.js";
 const form = document.querySelector('.form-add')
 let listNote = document.querySelector('.list-note')
 let important = document.querySelector('#header-inputs-important');
-
+let lighter = document.querySelector('.span-dot')
 export default class Tasks {
 
     constructor() {
@@ -16,7 +16,9 @@ export default class Tasks {
         tasks.forEach((item) => {
             listNote.insertAdjacentHTML("afterbegin", `
                     <li class="list-note-new" id="${item.id}">
-                        <span class='span-dot'></span>
+                        <span class='span-dot' style="background:${
+                             item.important == true ? 'red' : item.status == true ? "green" : item.status  == false ? "orange" : 'null'
+                    }" ></span>
                         <p class="note-new-text">${item.text}</p>
                         <span class='note-new-date'>${item.date}</span>
                         <span><i class="fa-solid fa-pen-to-square edit" style="color: #ffd43b;"></i></span>
@@ -52,18 +54,19 @@ export default class Tasks {
         this.renderTask(filteredTasks);
     }
     updateStatus(id) {
-        let findTasks = this.tasks.filter((item) => item.id == id);
-        findTasks[0].status = "completed"
+        let findTasks = this.tasks.map((item) => {
+            if (item.id == id) {
+                item.status = "completed"
+            }
+        })
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
-        // this.tasks = JSON.parse(localStorage.getItem("tasks"));
-        // return this.renderTask(this.tasks)
+        this.renderTask(this.tasks);
     }
 
     searchNote(text) {
         let filterNotes = this.tasks.filter((item) => {
             return item.text.toLowerCase().startsWith(text);
-        }
-        )
+        })
         this.renderTask(filterNotes)
     }
 }
