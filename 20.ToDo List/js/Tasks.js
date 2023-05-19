@@ -2,6 +2,7 @@ import Utils from "./utils.js";
 import { Notification } from "./Notification.js";
 
 
+
 const form = document.querySelector('.form-add')
 let listNote = document.querySelector('.list-note')
 let important = document.querySelector('#header-inputs-important');
@@ -19,23 +20,26 @@ export default class Tasks {
                         <span class='span-dot'></span>
                         <p class="note-new-text">${item.text}</p>
                         <span class='note-new-date'>${item.date}</span>
-                        <span><i class="fa-solid fa-pen-to-square edit" style="color: #ffd43b;"></i></span>
-                        <span><i class="fa-solid fa-trash fa-beat-fade delete" style="color: #1d69ab;"></i></span> 
+                        <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
+                        <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
                         </li>
                         `)
             let lighter = document.querySelector('.span-dot')
-            console.log(lighter);
+
+
             if (item.important && item.status == true) {
                 lighter.style.background = 'green'
-                new Notification().newNotification(listNote, 'Task is done')
+                new Notification().newNotification(listNote, 'Task is done','green')
             }
-            else if (item.important != false) {
-                lighter.style.background = 'red'
-                new Notification().newNotification(listNote, 'Task is important')
-            } else if (item.status == true) {
+            else if (item.status == true && item.important == false) {
                 lighter.style.background = 'green'
-                new Notification().newNotification(listNote, 'Task is done')
-            } else if (lighter.status == false) {
+                new Notification().newNotification(listNote, 'Task is done','green')
+            }
+            else if (item.important == true && item.status == false) {
+                lighter.style.background = 'red'
+                new Notification().newNotification(listNote, 'Task is important','red')
+            }
+            else if (item.status == false) {
                 lighter.style.background = 'orange'
             }
         });
@@ -82,27 +86,7 @@ export default class Tasks {
         })
         this.renderTask(filterNotes)
     }
+
+    DragandDrop(){
+    }
 }
-
-
-
-
-
-
-
-class Process {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

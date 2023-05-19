@@ -1,7 +1,7 @@
 export class Notification {
-    newNotification(location, text) {
+    newNotification(location, text, color) {
         location.insertAdjacentHTML('beforeend',
-            `<div class="notification">
+            `<div class="notification" style="background:${color}">
             <p>${text}</p>
             </div>
             `
@@ -9,6 +9,5 @@ export class Notification {
         setTimeout(function () {
             document.querySelector('.notification').remove()
         }, 3000)
-
     }
 }

@@ -59,9 +59,8 @@ listNote.addEventListener("click", (e) => {
 listNote.addEventListener("click", (e) => {
     if (e.target.classList.contains('delete')) {
         let id = e.target.closest('.list-note-new').id
-        console.log(id);
         new Tasks().deleteTasks(id);
-        new Notification().newNotification(listNote,'Task is deleted')
+        new Notification().newNotification(listNote,'Task is deleted','rgb(29, 105, 171)')
     }
 })
 
