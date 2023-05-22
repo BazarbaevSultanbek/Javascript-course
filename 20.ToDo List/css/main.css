@@ -299,12 +299,26 @@ body {
   height: 700px;
   padding-right: 54px;
   width: 200px;
+  position: relative;
 }
 
-.process-status-div p {
+.process-status-div h1 {
   font-size: 23px;
   font-family: 'Open Sans', sans-serif;
   text-transform: capitalize;
   margin-left: -67px;
 }
 
+.box{
+  position: absolute;
+  width: 300px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+  height: 150px;
+  margin-left: -165px;
+  margin-top: 40px;
+}
+.maltext{
+  left: 15%;
+}

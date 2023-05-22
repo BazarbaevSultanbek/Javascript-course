@@ -9,6 +9,7 @@ let date = document.querySelector('.header-inputs-date');
 let text = document.querySelector('.header-inputs-text');
 let important = document.querySelector('#header-inputs-important');
 let addButton = document.querySelector('#header-inputs-btn');
+let pr = document.querySelectorAll('.box')
 
 new Tasks().renderTask(tasks);
 addButton.addEventListener("click", () => {
@@ -20,6 +21,7 @@ addButton.addEventListener("click", () => {
             important: important.checked == true ? true : false,
             status: false
         })
+
     } else {
         alert('Please add date and text !');
     }
@@ -47,7 +49,7 @@ listNote.addEventListener("click", (e) => {
         saver.addEventListener('click', () => {
             let edit = new Tasks().editTasks(id, moduleText.value, moduleDate.value)
             localStorage.setItem('tasks', JSON.stringify(edit));
-            new Notification().newNotification(listNote,'Task is changed')
+            new Notification().newNotification(listNote, 'Task is changed')
         })
     }
 
@@ -60,7 +62,7 @@ listNote.addEventListener("click", (e) => {
     if (e.target.classList.contains('delete')) {
         let id = e.target.closest('.list-note-new').id
         new Tasks().deleteTasks(id);
-        new Notification().newNotification(listNote,'Task is deleted','rgb(29, 105, 171)')
+        new Notification().newNotification(listNote, 'Task is deleted', 'rgb(29, 105, 171)')
     }
 })
 
@@ -100,3 +102,7 @@ menu.addEventListener('click', () => {
         list.style.display = 'block'
     }
 })
+
+
+
+new Tasks().DragandDrop(pr)

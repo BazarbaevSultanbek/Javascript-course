@@ -29,15 +29,15 @@ export default class Tasks {
 
             if (item.important && item.status == true) {
                 lighter.style.background = 'green'
-                new Notification().newNotification(listNote, 'Task is done','green')
+                new Notification().newNotification(listNote, 'Task is done', 'green')
             }
             else if (item.status == true && item.important == false) {
                 lighter.style.background = 'green'
-                new Notification().newNotification(listNote, 'Task is done','green')
+                new Notification().newNotification(listNote, 'Task is done', 'green')
             }
             else if (item.important == true && item.status == false) {
                 lighter.style.background = 'red'
-                new Notification().newNotification(listNote, 'Task is important','red')
+                new Notification().newNotification(listNote, 'Task is important', 'red')
             }
             else if (item.status == false) {
                 lighter.style.background = 'orange'
@@ -87,6 +87,24 @@ export default class Tasks {
         this.renderTask(filterNotes)
     }
 
-    DragandDrop(){
+    DragandDrop(element) {
+        let text = `
+        <p>teexx</p>
+        <p>fkewafl</p>
+        `
+
+        element.forEach((box) => {
+            let boxes = Array.prototype.slice.call(box)
+
+            boxes.addEventListener('dragover', (e) => {
+                e.preventDefault()
+                console.log('dragging');
+            })
+            boxes.addEventListener('drop',()=>{
+                box.appendChild(text)
+            })
+
+        })
     }
 }
+
