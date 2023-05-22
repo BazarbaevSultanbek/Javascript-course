@@ -6,6 +6,9 @@ import { Notification } from "./Notification.js";
 const form = document.querySelector('.form-add')
 let listNote = document.querySelector('.list-note')
 let important = document.querySelector('#header-inputs-important');
+let statusProcess = document.querySelector('#process')
+let statusImportant = document.querySelector('#important')
+let statusDone = document.querySelector('#done')
 export default class Tasks {
 
     constructor() {
@@ -87,24 +90,77 @@ export default class Tasks {
         this.renderTask(filterNotes)
     }
 
-    DragandDrop(element) {
-        let text = `
-        <p>teexx</p>
-        <p>fkewafl</p>
-        `
+    DragandDrop(tasks) {
 
-        element.forEach((box) => {
-            let boxes = Array.prototype.slice.call(box)
+        let eachTask = tasks.forEach((item) => {
+            if (item.important && item.status == true || item.status == true && item.important == false) {
+                statusDone.insertAdjacentHTML('beforeend', `
+                <div class="process-status" draggable="true">
+                <p>${item.text}</p>
+                <span>${item.date}</span>
+                </div>
+                `)
 
-            boxes.addEventListener('dragover', (e) => {
-                e.preventDefault()
-                console.log('dragging');
-            })
-            boxes.addEventListener('drop',()=>{
-                box.appendChild(text)
-            })
+            }else if (item.important == false && item.status == false) {
+                statusProcess.insertAdjacentHTML('beforeend', `
+                <div class="process-status" draggable="true">
+                <p>${item.text}</p>
+                <span>${item.date}</span>
+                </div>
+                `)
+            } else if (item.important == true && item.status == false) {
+                statusImportant.insertAdjacentHTML('beforeend', `
+                <div class="process-status" draggable="true">
+                <p>${item.text}</p>
+                <span>${item.date}</span>
+                </div>
+                `)
 
+            }
         })
+    let processInner = document.querySelectorAll('.process-status')
+        
+        processInner.forEach((item) => {
+            let text = 'mal'
+                    item.addEventListener('dragover', (element) => {
+                    element.preventDefault()
+                    item.classList.add("dragged")
+                    // console.log(item);
+                })
+                item.addEventListener('dragleave', (element) => {
+                    element.preventDefault()
+                    item.classList.remove("dragged")
+                })
+                item.addEventListener('drop', (element) => {
+                    element.preventDefault()
+                    console.log(item,element);
+                    item.classList.remove('dragged');
+                    item.appendChild(text);  
+                })
+        
+            })
     }
-}
-
+    }
+    // leaves.forEach((item) => {
+    //     item.addEventListener('dragover', (element) => {
+    //         element.preventDefault()
+    //         item.classList.add("dragged")
+    //         let arr = localStorage.status = 'moving'
+    //         localStorage.setItem('status', arr)
+    //     })
+    //     item.addEventListener('dragleave', (element) => {
+    //         element.preventDefault()
+    //         item.classList.remove("dragged")
+    //         let arr = localStorage.status = 'unaviable'
+    //         localStorage.setItem('status', arr)
+    
+    //     })
+    //     item.addEventListener('drop', (element) => {
+    //         element.preventDefault()
+    //         item.appendChild(text)
+    //         let arr = localStorage.status = 'aviable'
+    //         localStorage.setItem('status', arr)
+    //         console.log(item.id);
+    //     })
+    
+    // })

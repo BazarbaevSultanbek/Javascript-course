@@ -12,6 +12,7 @@ let addButton = document.querySelector('#header-inputs-btn');
 let pr = document.querySelectorAll('.box')
 
 new Tasks().renderTask(tasks);
+
 addButton.addEventListener("click", () => {
     if (date.value != '' && text.value != '') {
         new Tasks().addTask({
@@ -21,7 +22,6 @@ addButton.addEventListener("click", () => {
             important: important.checked == true ? true : false,
             status: false
         })
-
     } else {
         alert('Please add date and text !');
     }
@@ -102,7 +102,4 @@ menu.addEventListener('click', () => {
         list.style.display = 'block'
     }
 })
-
-
-
-new Tasks().DragandDrop(pr)
+    new Tasks().DragandDrop(tasks)
