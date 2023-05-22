@@ -19,9 +19,8 @@ body {
   position: absolute;
   right: 0.5%;
   color: white;
-  font-family: 'Open Sans',sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
-
 
 .header {
   display: flex;
@@ -121,7 +120,7 @@ button[id="header-inputs-btn"] {
   border-color: rgb(29, 105, 171);
 }
 
-input[id="All"]:checked~.menu-lab-all {
+input[id="All"]:checked ~ .menu-lab-all {
   background-color: rgb(29, 105, 171);
   padding: 11px 16px;
   color: #fff;
@@ -131,7 +130,7 @@ input[id="All"]:checked~.menu-lab-all {
   margin-right: 6px;
 }
 
-input[id="Process"]:checked~.menu-lab-pro {
+input[id="Process"]:checked ~ .menu-lab-pro {
   background-color: rgb(29, 105, 171);
   padding: 11px 16px;
   color: #fff;
@@ -273,38 +272,62 @@ input[id="header-inputs-important"] {
   z-index: 2;
 }
 
-input[id="header-inputs-important"]:checked~.header-inputs-label::before {
+input[id="header-inputs-important"]:checked ~ .header-inputs-label::before {
   margin-left: 18px;
-}
-
-body {
-  position: relative;
 }
 
 .process {
   display: none;
 }
-
-.process-info {
-  position: absolute;
-  left: 55%;
-  top: 130px;
+.process-logo {
   display: flex;
-  transform: translateX(-40%);
-  gap: 250px;
+  justify-content: center;
+  gap: 17%;
+  margin-top: 3%;
 }
-
-.process-status-notes {
+.process-logo h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 23;
+  text-transform: capitalize;
+}
+.process-line {
+  display: flex;
+  /* justify-content: center; */
+  margin-top: -5%;
+}
+.process-line div {
   border-right: 1px solid black;
   height: 700px;
-  padding-right: 54px;
-  width: 200px;
+  width: 1px;
+  margin-top: -95px;
 }
-
-.process-status-div p {
-  font-size: 23px;
-  font-family: 'Open Sans', sans-serif;
-  text-transform: capitalize;
-  margin-left: -67px;
+.process-line div:nth-child(1) {
+  margin-left: 38%;
 }
-
+.process-line div:nth-child(2) {
+  margin-left: 28%;
+}
+.process-line div:nth-child(3) {
+  margin-left: 20%;
+}
+.process-info {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2%;
+}
+.process-status {
+  width: 325px;
+  height: 135px;
+  background: white;
+  border-radius: 5px;
+}
+.process-status:nth-child(1){
+  /* margin-left:101px; */
+}
+.process-status:nth-child(2){
+  /* margin-left: 85px; */
+}
+.process-status:nth-child(3){
+  /* margin-left: 258px; */
+}

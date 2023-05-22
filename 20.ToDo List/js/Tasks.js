@@ -6,6 +6,7 @@ import { Notification } from "./Notification.js";
 const form = document.querySelector('.form-add')
 let listNote = document.querySelector('.list-note')
 let important = document.querySelector('#header-inputs-important');
+let pro = document.querySelectorAll('.process-status-div')
 export default class Tasks {
 
     constructor() {
@@ -87,6 +88,45 @@ export default class Tasks {
         this.renderTask(filterNotes)
     }
 
-    DragandDrop(){
+    DragandDrop(id){
+        pro.forEach((item) => {
+                item.addEventListener('dragover', (element) => {
+                    element.preventDefault()
+                    item.classList.add("dragged")
+                })
+                item.addEventListener('dragleave', (element) => {
+                    element.preventDefault()
+                    item.classList.remove("dragged")
+                })
+                item.addEventListener('drop', (element) => {
+                    element.preventDefault()
+                    item.appendChild(text)
+                    console.log(item.id);
+                })
+            
+            })
     }
 }
+// leaves.forEach((item) => {
+//     item.addEventListener('dragover', (element) => {
+//         element.preventDefault()
+//         item.classList.add("dragged")
+//         let arr = localStorage.status = 'moving'
+//         localStorage.setItem('status', arr)
+//     })
+//     item.addEventListener('dragleave', (element) => {
+//         element.preventDefault()
+//         item.classList.remove("dragged")
+//         let arr = localStorage.status = 'unaviable'
+//         localStorage.setItem('status', arr)
+
+//     })
+//     item.addEventListener('drop', (element) => {
+//         element.preventDefault()
+//         item.appendChild(text)
+//         let arr = localStorage.status = 'aviable'
+//         localStorage.setItem('status', arr)
+//         console.log(item.id);
+//     })
+
+// })
