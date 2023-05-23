@@ -9,6 +9,12 @@ let important = document.querySelector('#header-inputs-important');
 let statusProcess = document.querySelector('#process')
 let statusImportant = document.querySelector('#important')
 let statusDone = document.querySelector('#done')
+
+
+
+
+
+
 export default class Tasks {
 
     constructor() {
@@ -93,74 +99,88 @@ export default class Tasks {
     DragandDrop(tasks) {
 
         let eachTask = tasks.forEach((item) => {
-            if (item.important && item.status == true || item.status == true && item.important == false) {
+            if (item.important && item.status == true) {
                 statusDone.insertAdjacentHTML('beforeend', `
-                <div class="process-status" draggable="true">
+                <div class="process-status" draggable="true" id=${item.id} status='true' important='true'>
                 <p>${item.text}</p>
                 <span>${item.date}</span>
                 </div>
                 `)
 
-            }else if (item.important == false && item.status == false) {
+            }else if(item.status == true && item.important == false){
+                statusDone.insertAdjacentHTML('beforeend', `
+                <div class="process-status" draggable="true" id=${item.id} status='true' important='false'>
+                <p>${item.text}</p>
+                <span>${item.date}</span>
+                </div>
+                `)
+            }
+             else if (item.important == false && item.status == false) {
                 statusProcess.insertAdjacentHTML('beforeend', `
-                <div class="process-status" draggable="true">
+                <div class="process-status" draggable="true" id=${item.id} status='false' important='false'>
                 <p>${item.text}</p>
                 <span>${item.date}</span>
                 </div>
                 `)
             } else if (item.important == true && item.status == false) {
                 statusImportant.insertAdjacentHTML('beforeend', `
-                <div class="process-status" draggable="true">
+                <div class="process-status" draggable="true" id=${item.id} status='false' important='true'>
                 <p>${item.text}</p>
                 <span>${item.date}</span>
                 </div>
-                `)
 
+                `)
+                
             }
         })
-    let processInner = document.querySelectorAll('.process-status')
-        
+
+        let processInner = document.querySelectorAll('.process-inner')
+        let processStatus = document.querySelector('.process-status')
+        let processToDo = document.querySelector('#process')
+        let processImp = document.querySelector('#important')
+        let processDone = document.querySelector('#done')
         processInner.forEach((item) => {
-            let text = 'mal'
-                    item.addEventListener('dragover', (element) => {
-                    element.preventDefault()
-                    item.classList.add("dragged")
-                    // console.log(item);
-                })
-                item.addEventListener('dragleave', (element) => {
-                    element.preventDefault()
-                    item.classList.remove("dragged")
-                })
-                item.addEventListener('drop', (element) => {
-                    element.preventDefault()
-                    console.log(item,element);
-                    item.classList.remove('dragged');
-                    item.appendChild(text);  
-                })
-        
+            item.addEventListener('dragover', (e) => {
+                e.preventDefault()
             })
+            item.addEventListener('drop', (e) => {
+                e.preventDefault()
+                item.appendChild(processStatus)
+                console.log(processStatus.parentElement);
+                if(processStatus.parentElement == processImp){
+                    processStatus.style.background = '#E54A4A'
+                    processStatus.important = true
+                }else if(processStatus.parentElement == processDone){
+                    processStatus.style.background = '#66EE85'                    
+                    processStatus.status = true
+                }else{
+                    processStatus.style.background = 'white'
+                    processStatus.status = false
+                    processStatus.important = false
+                }
+
+            })
+
+        })
+        
+        
     }
-    }
-    // leaves.forEach((item) => {
-    //     item.addEventListener('dragover', (element) => {
-    //         element.preventDefault()
-    //         item.classList.add("dragged")
-    //         let arr = localStorage.status = 'moving'
-    //         localStorage.setItem('status', arr)
-    //     })
-    //     item.addEventListener('dragleave', (element) => {
-    //         element.preventDefault()
-    //         item.classList.remove("dragged")
-    //         let arr = localStorage.status = 'unaviable'
-    //         localStorage.setItem('status', arr)
-    
-    //     })
-    //     item.addEventListener('drop', (element) => {
-    //         element.preventDefault()
-    //         item.appendChild(text)
-    //         let arr = localStorage.status = 'aviable'
-    //         localStorage.setItem('status', arr)
-    //         console.log(item.id);
-    //     })
-    
-    // })
+}
+// processStatus.forEach((item)=>{
+//         console.log(item);
+//         item.addEventListener('dragover',(element)=>{
+//             element.preventDefault()
+//             item.classList.add('over')
+//         })
+//         item.addEventListener('dragleave',(element)=>{
+//             element.preventDefault()
+//             item.classList.remove('over')                    
+//         })
+//         item.addEventListener('drop',(element)=>{
+//             element.preventDefault()
+//             item.classList.remove('over')
+//             // if(item.parentElement == processToDo){
+//                 processToDo.appendChild(item)
+//             // }
+//         })
+// })
