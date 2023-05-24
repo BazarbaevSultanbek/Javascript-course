@@ -34,9 +34,12 @@ export default class Tasks {
                         </li>
                         `)
             let lighter = document.querySelector('.span-dot')
-
+            lighter.addEventListener('dblclick', () => {
+                lighter.style.background = lighter.style.background === 'red' ? '' : 'green';
+              });
 
             if (item.important && item.status == true) {
+                item.status = false
                 lighter.style.background = 'green'
                 new Notification().newNotification(listNote, 'Task is done', 'green')
             }
