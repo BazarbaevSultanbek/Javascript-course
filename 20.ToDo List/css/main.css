@@ -330,6 +330,7 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
 }
 
 .process-status {
+  list-style: none;
   width: 475px;
   height: 105px;
   background: white;
@@ -362,12 +363,25 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
   font-family: 'Roboto', sans-serif;
 }
 
-/* .process-status:nth-child(1){
-  margin-left:101px;
+
+.doneImportant{
+  background: green;
 }
-.process-status:nth-child(2){
-  margin-left: 85px;
+
+.done{
+  background: green;
 }
-.process-status:nth-child(3){
-  margin-left: 258px;
-} */
+
+.todo{
+  background: rgba(245, 39, 39, 0.69);
+}
+
+.todoImportant{
+  background: orange;
+}
+
+.status-i{
+  text-align: right;
+  margin-top: -24px;
+  margin-right: 18px;
+}

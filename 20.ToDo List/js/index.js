@@ -10,6 +10,7 @@ let text = document.querySelector('.header-inputs-text');
 let important = document.querySelector('#header-inputs-important');
 let addButton = document.querySelector('#header-inputs-btn');
 let pr = document.querySelectorAll('.box')
+let lighter = document.querySelector('.span-dot')
 
 new Tasks().renderTask(tasks);
 
@@ -22,10 +23,14 @@ addButton.addEventListener("click", () => {
             important: important.checked == true ? true : false,
             status: false
         })
-    } else {
+
+
+    }
+    else {
         alert('Please add date and text !');
     }
 })
+
 listNote.addEventListener("click", (e) => {
     if (e.target.classList.contains('edit')) {
         let id = e.target.closest('.list-note-new').id
@@ -102,4 +107,4 @@ menu.addEventListener('click', () => {
         list.style.display = 'block'
     }
 })
-    new Tasks().DragandDrop(tasks)
+new Tasks().DragandDrop(tasks)

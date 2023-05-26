@@ -5,4 +5,3 @@ let getData = async function(){
 }
 
 getData()
-
