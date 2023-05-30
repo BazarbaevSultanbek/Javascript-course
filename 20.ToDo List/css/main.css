@@ -329,7 +329,7 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
   background-color: black;
 }
 
-.process-list {
+.process-status {
   list-style: none;
   width: 475px;
   height: 125px;
@@ -340,14 +340,14 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
   padding: 15px 5px 0px 5px;
 }
 
-.process-list p {
+.process-status p {
   font-size: 28px;
   font-family: 'Roboto', sans-serif;
   padding-bottom: 25px;
   position: relative;
 }
 
-.process-list p::before {
+.process-status p::before {
   content: '';
   position: absolute;
   height: 2px;
@@ -358,7 +358,7 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
 
 }
 
-.process-list span {
+.process-status span {
   padding-top: 10px;
   font-size: 25px;
   font-family: 'Roboto', sans-serif;
@@ -381,11 +381,8 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
   background: orange;
 }
 
-.status{
+.status-i{
   text-align: right;
   margin-top: -24px;
   margin-right: 18px;
-}
-.status i{
-  font-size: 20px;
 }

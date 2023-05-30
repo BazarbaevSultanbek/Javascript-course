@@ -1,77 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/main.css">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-<body>
-    <div class='header'>
-        <p class="header-logo">Tasks</p>
-        <div class='header-inputs'>
-            <div class="form-add">
-                <input type='date' class='header-inputs-date'>
-                <input type='text' class='header-inputs-text' placeholder='Add note'>
-                <input type='checkbox' id='header-inputs-important'>
-                <label for="header-inputs-important" class="header-inputs-label">
-                    <div class="header-inputs-div"></div>
-                </label>
-                <button id='header-inputs-btn'>Add Note</button>
-            </div>
+  <body>
+    <div class="header">
+      <p class="header-logo">Tasks</p>
+      <div class="header-inputs">
+        <div class="form-add">
+          <input type="date" class="header-inputs-date" />
+          <input
+            type="text"
+            class="header-inputs-text"
+            placeholder="Add note"
+          />
+          <input type="checkbox" id="header-inputs-important" />
+          <label for="header-inputs-important" class="header-inputs-label">
+            <div class="header-inputs-div"></div>
+          </label>
+          <button id="header-inputs-btn">Add Note</button>
         </div>
-        <div class='header-buttons'>
-            <button class='list-logOut'>LogOut</button>
-            <button class='list-profile'>My profile</button>
-        </div>
+      </div>
+      <div class="header-buttons">
+        <button class="list-logOut">LogOut</button>
+        <button class="list-profile">My profile</button>
+      </div>
     </div>
     <div class="list">
-        <div class="list-radio">
-            <input type='text' class='list-search' placeholder='Search' id='search'>
-            <ul class='list-note'>
-
-            </ul>
-        </div>
+      <div class="list-radio">
+        <input
+          type="text"
+          class="list-search"
+          placeholder="Search"
+          id="search"
+        />
+        <ul class="list-note"></ul>
+      </div>
     </div>
     <div class="process">
-        <div class="process-info">
-            <div class="process-inner" id="process">
-                <h1>in process</h1>
-                <!-- <ul class="process-list"></ul> -->
-            </div>
-            <div class="process-inner" id="important">
-                <h1>important</h1>
-                <!-- <ul class="process-list"></ul> -->
-            </div>
-            <div class="process-inner" id="done">
-                <h1>Done</h1>
-                <!-- <ul class="process-list"></ul> -->
-            </div>
+      <div class="process-info">
+        <div class="process-inner" id="process" draggable="true">
+          <h1>in process</h1>
+          <!-- <ul class="process-list"></ul> -->
         </div>
+        <div class="process-inner" id="important" draggable="true">
+          <h1>important</h1>
+          <!-- <ul class="process-list"></ul> -->
+        </div>
+        <div class="process-inner" id="done" draggable="true">
+          <h1>Done</h1>
+          <!-- <ul class="process-list"></ul> -->
+        </div>
+      </div>
     </div>
 
-    <div class='menu'>
-        <input type='radio' name='radio-in' id='All' checked>
-        <label for="All" class='menu-lab-all'>
-            <i class="fa-solid fa-users-rectangle fa-flip" style="color: #2d518f"></i>
-            All</label>
+    <div class="menu">
+      <input type="radio" name="radio-in" id="All" checked />
+      <label for="All" class="menu-lab-all">
+        <i
+          class="fa-solid fa-users-rectangle fa-flip"
+          style="color: #2d518f"
+        ></i>
+        All</label
+      >
 
-        <input type='radio' name='radio-in' id='Process'>
-        <label for="Process" class='menu-lab-pro'>
-            <i class="fa-brands fa-slack fa-flip" style="color: #2f5ba7;"></i>
-            Process</label>
+      <input type="radio" name="radio-in" id="Process" />
+      <label for="Process" class="menu-lab-pro">
+        <i class="fa-brands fa-slack fa-flip" style="color: #2f5ba7"></i>
+        Process</label
+      >
     </div>
     <script type="module" src="js/index.js"></script>
-
-</body>
-
+  </body>
 </html>
