@@ -301,6 +301,7 @@ input[id="header-inputs-important"]:checked~.header-inputs-label::before {
 
 .process-inner {
   width: 33.3%;
+  height: 650px;
 }
 
 .process-inner[id='important'] {
