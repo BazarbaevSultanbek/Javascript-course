@@ -12,70 +12,6 @@ export default class Tasks {
     constructor() {
         this.tasks = new Utils().tasksFromLocalStorage();
     }
-
-    // renderTask(tasks) {
-    //     listNote.innerHTML = ''
-    //     tasks.forEach((item) => {
-
-    //         let status = ""
-
-    //         if (item.important && item.status) {
-    //             new Notification().newNotification(listNote, 'Task is done', 'rgba(0, 247, 20, 0.69)')
-    //             status = "doneImportant"
-    //         }
-    //         else if (!item.important && item.status) {
-    //             status = "done"
-    //             new Notification().newNotification(listNote, 'Task is done', 'rgba(0, 247, 20, 0.69)')
-    //         }
-    //         else if (item.important && !item.status) {
-    //             status = "todoImportant"
-    //             new Notification().newNotification(listNote, 'Task is important', 'rgba(245, 39, 39, 0.69)')
-    //         }
-    //         else if (!item.important && !item.status) {
-    //             status = "todo"
-    //             new Notification().newNotification(listNote, 'Task is important', 'rgba(245, 39, 39, 0.69)')
-    //         }
-
-    //         tasks.forEach((item) => {
-
-    //             const processInner = item.important && item.status
-    //                 ? document.querySelector('#done')
-    //                 : !item.important && item.status
-    //                     ? document.querySelector('#done')
-    //                     : item.important && !item.status
-    //                         ? document.querySelector('#important')
-    //                         : !item.important && !item.status
-    //                             ? document.querySelector('#process')
-    //                             : null;
-    //             processInner.insertAdjacentHTML('beforeend', `<ul class="process-list"></ul>`)
-    //             const processList = document.querySelector('.process-list')
-    //             processList.insertAdjacentHTML(
-    //                 'afterbegin',
-    //                 ` <li  id="${item.id}" draggable="true">
-    //               <p >${item.text}</p>
-    //               <span >${item.date}</span>
-    //               <div class='status'>
-    //               <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-    //               <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
-    //               </div>
-    //               </li>`
-    //             );
-    //             console.log(item.id);
-    //         });
-
-    //         listNote.insertAdjacentHTML("afterbegin", `
-    //         <li class="list-note-new" id="${item.id}">
-    //                     <span class='span-dot ${status}'></span>
-    //                     <p class="note-new-text">${item.text}</p>
-    //                     <span class='note-new-date'>${item.date}</span>
-    //                     <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-    //                     <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
-    //                     </li>
-    //                     `)
-
-    //     });
-
-    // }
     renderTask(tasks) {
         listNote.innerHTML = "";
         tasks.forEach((item) => {
@@ -107,7 +43,6 @@ export default class Tasks {
                         </li>
                         `
             );
-            console.log(status);
         });
     }
 
@@ -146,6 +81,37 @@ export default class Tasks {
         this.renderTask(this.tasks)
     }
 
+    updateStatusInCategories(id, status) {
+        console.log(id);
+        console.log(status);
+    
+        this.tasks.map((item) => {
+            console.log(item);
+            if (item.id == id) {
+                if (!item.status && !item.important && status == 'done') {
+                    item.status = true;
+                } else if (!item.status && item.important && status == 'done') {
+                    item.status = true;
+                } else if (item.status && item.important && status == 'process') {
+                    item.status = false;
+                    item.important = false;
+                } else if (!item.status && item.important && status == 'process') {
+                    item.important = false;
+                } else if (item.status && !item.important && status == 'important') {
+                    item.status = false;
+                    item.important = true;
+                } else if (!item.status && !item.important && status == 'important') {
+                    item.important = true;
+                }
+            }
+        });
+    
+        console.log(this.tasks);
+        localStorage.setItem("tasks", JSON.stringify(this.tasks));
+        this.renderTask(this.tasks);
+    }
+    
+
     searchNote(text) {
         let filterNotes = this.tasks.filter((item) => {
             return item.text.toLowerCase().startsWith(text);
@@ -159,17 +125,17 @@ export default class Tasks {
         let processImp = document.querySelector("#important");
         let processDone = document.querySelector("#done");
 
+
+
         this.tasks.forEach((item) => {
             if (item.important && item.status) {
                 processDone.insertAdjacentHTML(
                     "beforeend",
                     `
-                <div class="process-status" id="${item.id}" draggable='true' status='${item.status}' important='${item.important}'>
+                <div class="process-status" id="${item.id}" important='${item.important}' status='${item.status}' draggable='true'>
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i"></div>
-                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-                            <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
                             </div>
                             </div>
                             `
@@ -178,12 +144,10 @@ export default class Tasks {
                 processDone.insertAdjacentHTML(
                     "beforeend",
                     `
-                <div class="process-status" id="${item.id}" draggable='true' status='${item.status}' important='${item.important}'>
+                <div class="process-status" id="${item.id}" important='${item.important}' status='${item.status}' draggable='true'>
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i">
-                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-                            <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
                             </div>
                             </div>
                             `
@@ -192,12 +156,10 @@ export default class Tasks {
                 processImp.insertAdjacentHTML(
                     "beforeend",
                     `
-                <div class="process-status" id="${item.id}" draggable='true' status='${item.status}' important='${item.important}'>
+                <div class="process-status" id="${item.id}" important='${item.important}' status='${item.status}' draggable='true'>
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i">
-                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-                            <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
                             </div>
                             </div>
                             `
@@ -206,12 +168,10 @@ export default class Tasks {
                 processToDo.insertAdjacentHTML(
                     "beforeend",
                     `
-                <div class="process-status" id="${item.id}" draggable='true' status='${item.status}' important='${item.important}'>
+                <div class="process-status" id="${item.id}" important='${item.important}' status='${item.status}'  draggable='true'>
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i">
-                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-                            <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
                             </div>
                             </div>
                             `
@@ -233,124 +193,17 @@ export default class Tasks {
                 e.target.classList.remove('dragged-over');
             });
 
+
+
             item.addEventListener('drop', (e) => {
                 e.preventDefault();
                 const draggedItem = document.querySelector('.dragged');
                 e.target.appendChild(draggedItem);
                 item.classList.remove('dragged-over');
 
-                if (item.id === 'process') {
-                    console.log('1');
-                    const tasks = Array.from(document.querySelectorAll('.process-status')).map((el) => ({
-                        id: el.id,
-                        text: el.querySelector('p').textContent,
-                        date: el.querySelector('span').textContent,
-                        status: false,
-                        important: false
-                    }));
-                    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-                } else if (item.id === 'important') {
-                    console.log('2');
-                    draggedItem.setAttribute('important', true);
-                    const tasks = Array.from(document.querySelectorAll('.process-status')).map((el) => ({
-                        id: el.id,
-                        text: el.querySelector('p').textContent,
-                        date: el.querySelector('span').textContent,
-                        status: el.getAttribute('status') === false,
-                        important: el.getAttribute('important') === true
-                    }));
-                    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-                } else if (item.id === 'done') {
-                    console.log('3');
-                    draggedItem.setAttribute('status', true);
-                    const tasks = Array.from(document.querySelectorAll('.process-status')).map((el) => ({
-                        id: el.id,
-                        text: el.querySelector('p').textContent,
-                        date: el.querySelector('span').textContent,
-                        status: el.getAttribute('status') === true,
-                        important: el.getAttribute('important') === true
-                    }));
-                    localStorage.setItem('tasks', JSON.stringify(tasks));
-                    
-                    setTimeout(() => {
-                        draggedItem.classList.remove('dragged');
-                    }, 0)
-                     this.renderTask(this.tasks)
-                }
+                draggedItem.classList.remove('dragged')
+                this.updateStatusInCategories(draggedItem.id, e.target.id);
             });
         })
     }
 }
-
-// tasks.forEach((item) => {
-//     if (item.important && item.status) {
-//         processDone.insertAdjacentHTML("beforeend", `
-//         <li class="process-status" id="${item.id}" draggable='true'>
-//                     <p>${item.text}</p>
-//                     <span>${item.date}</span>
-//                     <div class="status-i"></div>
-//                     <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-//                     <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
-//                     </div>
-//                     </li>
-//                     `)
-//     } else if (!item.important && item.status) {
-//         processDone.insertAdjacentHTML("beforeend", `
-//         <li class="process-status" id="${item.id}" draggable='true'>
-//                     <p>${item.text}</p>
-//                     <span>${item.date}</span>
-//                     <div class="status-i">
-//                     <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-//                     <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
-//                     </div>
-//                     </li>
-//                     `)
-
-//     } else if (item.important && !item.status) {
-//         processImp.insertAdjacentHTML("beforeend", `
-//         <li class="process-status" id="${item.id}" draggable='true'>
-//                     <p>${item.text}</p>
-//                     <span>${item.date}</span>
-//                     <div class="status-i">
-//                     <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-//                     <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
-//                     </div>
-//                     </li>
-//                     `)
-//     } else if (!item.important && !item.status) {
-//         processToDo.insertAdjacentHTML("beforeend", `
-//         <li class="process-status" id="${item.id}" draggable='true'>
-//                     <p>${item.text}</p>
-//                     <span>${item.date}</span>
-//                     <div class="status-i">
-//                     <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-//                     <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
-//                     </div>
-//                     </li>
-//                     `)
-//     }
-// });
-
-// processInner.forEach((item) => {
-//     item.addEventListener('dragover', (e) => {
-//         e.preventDefault()
-//     })
-//     item.addEventListener('drop', (e) => {
-//         e.preventDefault()
-//         const id = e.target.id
-//         console.log(id);
-//         const item = e.dataTransfer.getData('text/html')
-//         console.log(item);
-//         if (id === "process") {
-//             processToDo.insertAdjacentHTML("beforeend", processStatus)
-//         } else if (id === "important") {
-//             processImp.insertAdjacentHTML("beforeend", processStatus)
-//         } else if (id === "done") {
-//             processDone.insertAdjacentHTML("beforeend", processStatus)
-//         }
-
-//     })
-
-// })
