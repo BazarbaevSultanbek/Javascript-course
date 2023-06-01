@@ -1,5 +1,5 @@
-import Utils from "./utils.js";
-import { Notification } from "./Notification.js";
+import Utils from "../js/utils.js";
+import { Notification } from "../js/Notification.js";
 
 const form = document.querySelector(".form-add");
 let listNote = document.querySelector(".list-note");
@@ -38,8 +38,8 @@ export default class Tasks {
                         <span class='span-dot ${status}'></span>
                         <p class="note-new-text">${item.text}</p>
                         <span class='note-new-date'>${item.date}</span>
-                        <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: #cacd2d;"></i>
-                        <i class="fa-solid fa-trash fa-bounce delete" style="color: #ff1a1a;"></i>
+                        <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: rgba(255, 127, 80, 1.0);"></i>
+                        <i class="fa-solid fa-trash fa-bounce delete" style="color:rgba(0, 0, 128, 1.0)"></i>
                         </li>
                         `
             );

@@ -1,6 +1,6 @@
-import Tasks from "./Tasks.js";
-import Utils from "./utils.js";
-import { Notification } from "./Notification.js";
+import Tasks from "../js/Tasks.js";
+import Utils from "../js/utils.js";
+import { Notification } from "../js/Notification.js";
 
 let tasks = new Utils().tasksFromLocalStorage();
 let list = document.querySelector(".list");
@@ -16,11 +16,11 @@ logOut.addEventListener("click", () => {
 });
 let MyProfile = document.querySelector(".list-profile");
 MyProfile.addEventListener("click", () => {
-  window.location.href = "../20.ToDo List/my-Profile.html";
+  window.location.href = "./my-Profile.html";
 });
 let MyPermission = document.querySelector('.list-permission')
 MyPermission.addEventListener('click', () => {
-  
+  window.location.href = './Permission.html'
 })
 
 

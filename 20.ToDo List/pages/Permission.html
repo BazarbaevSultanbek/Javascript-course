@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Permission</title>
+    <link rel="stylesheet" href="../css/Perm.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="permission">
+            <div class="permission-list">
+                <p>User list</p>
+            </div>
+            <div class="permission-user">
+                <p>Add new user</p>
+
+                <div class="permission-user-complete">
+                    <label for="login">Login</label>
+                    <input type="text" id="login" class="permission-login">
+                </div>
+                <div class="permission-user-complete">
+                    <label for="password">Password</label>
+                    <input type="password" class="permission-password">
+                </div>
+
+                <div class="permission-user-checkbox">
+                    <div>
+                        <input type="checkbox" id="generator">
+                        <label for="generator">Generator</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="show">
+                        <label for="show">Show Password</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="admin">
+                        <label for="admin">Make admin</label>
+                    </div>
+                </div>
+                <button class="add-user">Add User</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/Permission.js"></script>
+</body>
+
+</html>
