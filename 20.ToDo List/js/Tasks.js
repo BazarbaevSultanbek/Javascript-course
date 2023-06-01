@@ -82,34 +82,25 @@ export default class Tasks {
     }
 
     updateStatusInCategories(id, status) {
-        console.log(id);
-        console.log(status);
-    
-        this.tasks.map((item) => {
-            console.log(item);
-            if (item.id == id) {
-                if (!item.status && !item.important && status == 'done') {
+        this.tasks.forEach((item) => {
+            if (item.id === id) {
+                if (status === "done") {
                     item.status = true;
-                } else if (!item.status && item.important && status == 'done') {
-                    item.status = true;
-                } else if (item.status && item.important && status == 'process') {
+                    item.important = false;
+                } else if (status === "process") {
                     item.status = false;
                     item.important = false;
-                } else if (!item.status && item.important && status == 'process') {
-                    item.important = false;
-                } else if (item.status && !item.important && status == 'important') {
+                } else if (status === "important") {
                     item.status = false;
-                    item.important = true;
-                } else if (!item.status && !item.important && status == 'important') {
                     item.important = true;
                 }
             }
         });
     
-        console.log(this.tasks);
         localStorage.setItem("tasks", JSON.stringify(this.tasks));
         this.renderTask(this.tasks);
     }
+    
     
 
     searchNote(text) {

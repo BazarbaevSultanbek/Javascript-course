@@ -10,8 +10,33 @@ let text = document.querySelector(".header-inputs-text");
 let important = document.querySelector("#header-inputs-important");
 let addButton = document.querySelector("#header-inputs-btn");
 
+let logOut = document.querySelector(".list-logOut");
+logOut.addEventListener("click", () => {
+  window.location.href = "../20.ToDo List/login.html";
+});
+let MyProfile = document.querySelector(".list-profile");
+MyProfile.addEventListener("click", () => {
+  window.location.href = "../20.ToDo List/my-Profile.html";
+});
+let MyPermission = document.querySelector('.list-permission')
+MyPermission.addEventListener('click', () => {
+  
+})
+
+
+
+
+
+
+
+
+
 new Tasks().renderTask(tasks);
 new Tasks().DragandDrop();
+
+
+
+
 
 addButton.addEventListener("click", () => {
   if (date.value != "" && text.value != "") {
@@ -88,14 +113,7 @@ search.addEventListener("input", () => {
   new Tasks().searchNote(search.value.toLowerCase());
 });
 
-let logOut = document.querySelector(".list-logOut");
-logOut.addEventListener("click", () => {
-  window.location.href = "../20.ToDo List/login.html";
-});
-let MyProfile = document.querySelector(".list-profile");
-MyProfile.addEventListener("click", () => {
-  window.location.href = "../20.ToDo List/my-Profile.html";
-});
+
 let menu = document.querySelector(".menu");
 let all = document.querySelector("#All");
 let processInput = document.querySelector("#Process");
