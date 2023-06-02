@@ -28,6 +28,25 @@
     position: relative;
     width: 45%;
 }
+.list-admins{
+    margin-top: 15px;
+}
+.list-admins-li{
+    list-style: none;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 128, 128, 1.0);
+}
+.list-admins-li span{
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+.list-admins-li i{
+    font-size: 18px;
+}
+
 .permission-list::before{
     position: absolute;
     content: '';
@@ -75,6 +94,17 @@
 .permission-user-checkbox label{
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
+}
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:rgba(9, 138, 243, 0.852);
+    color: white;
+    font-size: 18px;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
 }
 .add-user{
     background-color:rgba(9, 138, 243, 0.852);

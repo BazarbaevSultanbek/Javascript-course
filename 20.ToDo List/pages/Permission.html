@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Permission</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="../css/Perm.css">
 </head>
 
@@ -14,6 +18,7 @@
         <div class="permission">
             <div class="permission-list">
                 <p>User list</p>
+                <ul class="list-admins"></ul>
             </div>
             <div class="permission-user">
                 <p>Add new user</p>
@@ -24,7 +29,7 @@
                 </div>
                 <div class="permission-user-complete">
                     <label for="password">Password</label>
-                    <input type="password" class="permission-password">
+                    <input type="text" id="password" class="permission-password" >
                 </div>
 
                 <div class="permission-user-checkbox">
@@ -41,6 +46,7 @@
                         <label for="admin">Make admin</label>
                     </div>
                 </div>
+                <button class="back">Back</button>
                 <button class="add-user">Add User</button>
             </div>
 
@@ -48,7 +54,7 @@
     </div>
 
 
-    <script src="js/Permission.js"></script>
+    <script type="module" src="../js/Permission.js"></script>
 </body>
 
 </html>

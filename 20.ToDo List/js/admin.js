@@ -1,33 +1,27 @@
-let admin = [
+import { Admins } from "./utils.js";
+
+let admin = new Admins().adminsFromLocalStorage(); 
+
+if (admin.length === 0) {
+  admin = [
     {
-        login: 'admin',
-        password: 'admin'
+      login: 'admin',
+      password: 'admin'
     },
     {
-        login: 'Sultanbek',
-        password: "Sultanbek"
+      login: 'Sultanbek',
+      password: "Sultanbek"
     }
-]
-
-
-export { admin }
+  ];
+  new Admins().saveAdminsToLocalStorage(admin);
+}
 
 export function addAdmin(username, password) {
-    admin.push({ login: username, password: password });
+  admin.push({ login: username, password: password });
+  new Admins().saveAdminsToLocalStorage(admin); 
 }
 
-export default class Guides {
-    takeAdmin() {
-        let guides = JSON.parse(localStorage.getItem('guides') || [])
-        return guides
-    }
-}
+export { admin };
 
-export function addGuide(guide) {
-    let guides = JSON.parse(localStorage.getItem('guides') || [])
-    guides.push(guide)
-    localStorage.setItem('guides', JSON.stringify(guides))
-}
 
-// addGuide(admin)
 
