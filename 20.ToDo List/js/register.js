@@ -1,5 +1,6 @@
 import { admin, addAdmin } from "./admin.js";
 import { Admins } from "./utils.js";
+import { Current } from "./utils.js"
 
 const newDiv = document.querySelector('.list');
 const logEm = document.querySelector('.list-log');
@@ -26,6 +27,15 @@ export default btn.addEventListener('click', () => {
     addAdmin(logEm.value, logPass.value);
     new Admins().saveAdminsToLocalStorage(admin);
     new Admins().adminsFromLocalStorage();
+    let user = [{
+      canAdd: false,
+      canDelete: false,
+      canEdit: false,
+      login: logEm.value,
+      password: logPass.value,
+      id:id
+    }]
+    new Current().saveUserToLocalStorage(user)
     window.location.href = `/20.ToDo List/pages/index.html`;
   }
 });

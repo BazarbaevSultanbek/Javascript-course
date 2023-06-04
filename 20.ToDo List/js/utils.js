@@ -1,4 +1,4 @@
-export class Admins {
+export  class Admins {
     saveAdminsToLocalStorage(admins) {
         localStorage.setItem('admins', JSON.stringify(admins));
     }
@@ -8,7 +8,15 @@ export class Admins {
         return admins;
     }
 }
-
+export class Current{
+    saveUserToLocalStorage(user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+    }
+    CurrentUser(){
+        let user = JSON.parse(localStorage.getItem('currentUser') || '[]')
+        return user
+    }
+}
 
 export default class Utils {
     tasksFromLocalStorage() {

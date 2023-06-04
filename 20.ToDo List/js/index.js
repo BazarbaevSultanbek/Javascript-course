@@ -25,17 +25,8 @@ MyPermission.addEventListener('click', () => {
 })
 
 
-
-
-
-
-
-
 new Tasks().renderTask(tasks);
 new Tasks().DragandDrop();
-
-
-
 
 
 addButton.addEventListener("click", () => {

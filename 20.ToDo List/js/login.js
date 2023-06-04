@@ -1,4 +1,6 @@
 import { admin } from "./admin.js"
+import { Current } from "./utils.js"
+
 
 
 const ShowIn = document.querySelector('#show-in')
@@ -21,7 +23,18 @@ btn.addEventListener('click', () => {
         alert(`You did not write password or email! Please check`)
     } else if (login.value != "" || logPass.value != "") {
         if (login.value == admin[i].login && logPass.value == admin[i].password) {
+            let user = [{
+                login: admin[i].login,
+                password: admin[i].password,
+                id: admin[i].id,
+                canAdd:admin[i].canAdd,
+                canDelete:admin[i].canDelete,
+                canEdit:admin[i].canEdit
+            }]
+            new Current().saveUserToLocalStorage(user)
+            alert(`Welcome, ${admin[i].login}!`)
             window.location.href = "../20.ToDo List/pages/index.html";
+
         }else if(login.value != admin.login || logPass.value != admin.password){
             alert("Wrong login or password")
         }
