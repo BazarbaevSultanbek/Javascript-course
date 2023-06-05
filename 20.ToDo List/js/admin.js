@@ -8,6 +8,7 @@ if (admin.length === 0) {
       canAdd: true,
       canDelete: true,
       canEdit: true,
+      isAdmin:true,
       login: 'admin',
       password: 'admin',
       id: 745972
@@ -16,6 +17,7 @@ if (admin.length === 0) {
       canAdd: false,
       canDelete: false,
       canEdit: false,
+      isAdmin:false,
       login: 'Sultanbek',
       password: "Sultanbek",
       id: 908597
@@ -25,7 +27,7 @@ if (admin.length === 0) {
 }
 
 export function addAdmin(username, password) {
-  admin.push({ canAdd: false,canDelete: false,canEdit: false, login: username, password: password, id: Math.floor(Math.random() * 1000000) });
+  admin.push({ canAdd: false,canDelete: false,canEdit: false,isAdmin:false, login: username, password: password, id: Math.floor(Math.random() * 1000000) });
   new Admins().saveAdminsToLocalStorage(admin);
 }
 

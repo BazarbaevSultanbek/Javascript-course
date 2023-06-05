@@ -1,7 +1,6 @@
 import { Admins } from "./utils.js";
 import { Current } from "../js/utils.js";
 const adminsUl = document.querySelector('.list-admins');
-
 export class Permission {
   constructor() {
     this.admins = new Admins().adminsFromLocalStorage(); // Retrieve admins from local storage

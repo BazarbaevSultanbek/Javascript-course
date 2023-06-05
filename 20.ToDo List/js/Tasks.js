@@ -54,7 +54,6 @@ export default class Tasks {
     }
     getTasks(id) {
         let findTask = this.tasks.filter((item) => item.id == id);
-        console.log(findTask);
         return [findTask[0].text, findTask[0].date];
     }
 
@@ -82,8 +81,9 @@ export default class Tasks {
     }
 
     updateStatusInCategories(id, status) {
+        console.log(id, status);
         this.tasks.forEach((item) => {
-            if (item.id === id) {
+            if (item.id == id) {
                 if (status === "done") {
                     item.status = true;
                     item.important = false;
@@ -96,13 +96,10 @@ export default class Tasks {
                 }
             }
         });
-    
+
         localStorage.setItem("tasks", JSON.stringify(this.tasks));
         this.renderTask(this.tasks);
     }
-    
-    
-
     searchNote(text) {
         let filterNotes = this.tasks.filter((item) => {
             return item.text.toLowerCase().startsWith(text);
@@ -126,7 +123,10 @@ export default class Tasks {
                 <div class="process-status" id="${item.id}" important='${item.important}' status='${item.status}' draggable='true'>
                             <p>${item.text}</p>
                             <span>${item.date}</span>
-                            <div class="status-i"></div>
+                            <div class="status-i">
+                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: rgba(255, 127, 80, 1.0);"></i>
+                        <i class="fa-solid fa-trash fa-bounce delete" style="color:rgba(0, 0, 128, 1.0)"></i>
+                            </div>
                             </div>
                             </div>
                             `
@@ -139,6 +139,8 @@ export default class Tasks {
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i">
+                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: rgba(255, 127, 80, 1.0);"></i>
+                        <i class="fa-solid fa-trash fa-bounce delete" style="color:rgba(0, 0, 128, 1.0)"></i>
                             </div>
                             </div>
                             `
@@ -151,6 +153,8 @@ export default class Tasks {
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i">
+                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: rgba(255, 127, 80, 1.0);"></i>
+                        <i class="fa-solid fa-trash fa-bounce delete" style="color:rgba(0, 0, 128, 1.0)"></i>
                             </div>
                             </div>
                             `
@@ -163,6 +167,8 @@ export default class Tasks {
                             <p>${item.text}</p>
                             <span>${item.date}</span>
                             <div class="status-i">
+                            <i class="fa-solid fa-pen-to-square fa-bounce edit" style="color: rgba(255, 127, 80, 1.0);"></i>
+                        <i class="fa-solid fa-trash fa-bounce delete" style="color:rgba(0, 0, 128, 1.0)"></i>
                             </div>
                             </div>
                             `

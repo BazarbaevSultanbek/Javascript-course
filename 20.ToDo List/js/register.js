@@ -33,7 +33,8 @@ export default btn.addEventListener('click', () => {
       canEdit: false,
       login: logEm.value,
       password: logPass.value,
-      id:id
+      isAdmin: false,
+      id: Math.floor(Math.random() * 1000000)
     }]
     new Current().saveUserToLocalStorage(user)
     window.location.href = `/20.ToDo List/pages/index.html`;

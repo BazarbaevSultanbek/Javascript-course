@@ -11,7 +11,17 @@
     background: linear-gradient(rgba(24, 131, 219, 0.38), rgba(137, 173, 225, 0.31));
     background-repeat: no-repeat;
 }
-
+.notification {
+    top: 30%;
+    background-color: orange;
+    padding: 7px 5px;
+    border-radius: 5px;
+    width: 200px;
+    position: absolute;
+    right: 0.5%;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+  }
 .module {
     position: absolute;
     top: 0;

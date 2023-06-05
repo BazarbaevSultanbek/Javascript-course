@@ -1,42 +1,48 @@
-import { admin } from "./admin.js"
-import { Current } from "./utils.js"
+import { admin } from "./admin.js";
+import { Current } from "./utils.js";
 
+console.log(admin);
 
-
-const ShowIn = document.querySelector('#show-in')
-ShowIn.addEventListener('change', event=>{
+const ShowIn = document.querySelector('#show-in');
+ShowIn.addEventListener('change', () => {
     if (logPass.type === 'password') {
-        logPass.type = 'text'
+        logPass.type = 'text';
     } else {
-        logPass.type = 'password'
+        logPass.type = 'password';
     }
-})
+});
 
+const login = document.querySelector('.list-log');
+const logPass = document.querySelector('#login-pass');
+const btn = document.querySelector('.btn');
 
-const login = document.querySelector('.list-log')
-const logPass = document.querySelector('#login-pass')
-const btn = document.querySelector('.btn')
-
-let i = 0
+let i = 0;
 btn.addEventListener('click', () => {
-    if (login.value == "" || logPass.value == "") {
-        alert(`You did not write password or email! Please check`)
-    } else if (login.value != "" || logPass.value != "") {
-        if (login.value == admin[i].login && logPass.value == admin[i].password) {
-            let user = [{
-                login: admin[i].login,
-                password: admin[i].password,
-                id: admin[i].id,
-                canAdd:admin[i].canAdd,
-                canDelete:admin[i].canDelete,
-                canEdit:admin[i].canEdit
-            }]
-            new Current().saveUserToLocalStorage(user)
-            alert(`Welcome, ${admin[i].login}!`)
-            window.location.href = "../20.ToDo List/pages/index.html";
-
-        }else if(login.value != admin.login || logPass.value != admin.password){
-            alert("Wrong login or password")
+    if (login.value === "" || logPass.value === "") {
+        alert(`You did not write a password or email! Please check.`);
+    } else if (login.value !== "" || logPass.value !== "") {
+        let found = false;
+        for (let j = 0; j < admin.length; j++) {
+            if (login.value === admin[j].login && logPass.value === admin[j].password) {
+                let user = [{
+                    login: admin[j].login,
+                    password: admin[j].password,
+                    id: admin[j].id,
+                    canAdd: admin[j].canAdd,
+                    canDelete: admin[j].canDelete,
+                    canEdit: admin[j].canEdit,
+                    isAdmin:admin[j].isAdmin
+                }];
+                new Current().saveUserToLocalStorage(user);
+                alert(`Welcome, ${admin[j].login}!`);
+                window.location.href = "../20.ToDo List/pages/index.html";
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            alert("Wrong login or password");
         }
     }
-})  
+    i++;
+});
