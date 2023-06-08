@@ -1,0 +1,78 @@
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;800&display=swap);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1100px;
+    h1 {
+        text-align: center;
+        font-size: 35px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        margin: 40px 0 20px 0;
+    }
+}
+
+body {
+    background-color: orange;
+}
+
+.cards {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 840px;
+    margin:30px auto;
+    gap: 30px;
+    justify-content: center;
+
+    &-line {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 30px;
+        // width: 700px;
+    }
+
+
+}
+
+.card {
+    width: 150px;
+    height: 140px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 20px;
+    padding: 55px 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: 0.5s all linear;
+    &-back{
+        margin: -30px auto 0px auto;
+        display: none;
+        i{
+            font-size: 35px;
+        }
+    }
+}
+// .card:hover{
+//     trpxpxansform: rotateY(0deg);
+//     .card-back{
+//         opacity: 1;
+//     }
+//     .card-front{
+//         opacity: 0;
+//     }
+// }
