@@ -10,6 +10,7 @@
     margin: 0 auto;
     padding: 0 15px;
     max-width: 1100px;
+
     h1 {
         text-align: center;
         font-size: 35px;
@@ -29,21 +30,9 @@ body {
     align-items: center;
     flex-wrap: wrap;
     width: 840px;
-    margin:30px auto;
+    margin: 30px auto;
     gap: 30px;
     justify-content: center;
-
-    &-line {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        margin-top: 30px;
-        // width: 700px;
-    }
-
-
 }
 
 .card {
@@ -59,20 +48,13 @@ body {
     transform-style: preserve-3d;
     transform: rotateY(0deg);
     transition: 0.5s all linear;
-    &-back{
+
+    &-back {
         margin: -30px auto 0px auto;
         display: none;
-        i{
+
+        i {
             font-size: 35px;
         }
     }
 }
-// .card:hover{
-//     trpxpxansform: rotateY(0deg);
-//     .card-back{
-//         opacity: 1;
-//     }
-//     .card-front{
-//         opacity: 0;
-//     }
-// }
