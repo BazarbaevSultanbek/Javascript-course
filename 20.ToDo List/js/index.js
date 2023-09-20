@@ -47,7 +47,6 @@ current.forEach((item) => {
           date: date.value,
           important: important.checked == true ? true : false,
           status: false,
-
         });
         window.location.reload()
 

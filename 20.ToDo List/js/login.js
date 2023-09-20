@@ -35,7 +35,7 @@ btn.addEventListener('click', () => {
                 }];
                 new Current().saveUserToLocalStorage(user);
                 alert(`Welcome, ${admin[j].login}!`);
-                window.location.href = "../20.ToDo List/pages/index.html";
+                window.location.href = `../pages/index.html`
                 found = true;
                 break;
             }
